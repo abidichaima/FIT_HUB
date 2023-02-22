@@ -1,0 +1,76 @@
+{% extends 'baseFront.html.twig' %}
+{% block title %}
+<title>Categorie</title>
+
+ {% endblock %}
+
+
+
+{% block body %}
+    <h1>{{ categorie.nomCategorie }}</h1>
+
+   
+
+    <a href="{{ path('app_categorieu_index') }}"class="myButton">retourner a la liste des categories</a>
+<div class="mt-5"> 
+ <div class="wrapper">
+       
+        <tbody>
+        {% for article in articles %}
+    <div id="fh5co-blog" class="fh5co-bg-section">
+        <div class="container">
+            <div class="row animate-box">
+                <div class="row row-bottom-padded-md">
+				    <div class="col-lg-4 col-md-4">
+					        <div class="fh5co-blog animate-box">
+						
+						        <div class="blog-text">
+                                
+                                    <a> {{ article.imageArticle }}</a>
+							        <h3>{{ article.titreArticle }}</h3>
+							        <span class="posted_on">{{ article.dateArticle ? article.dateArticle|date('Y-m-d') : '' }}</span>
+						
+						           <div class="mt-5"> 
+							         <a href="{{path('app_articleu_show',{'id': article.id})}}" class="btn btn-primary">consulter</a>
+						           </div> 
+                                </div> 
+                            </div> 
+					</div>
+				</div>
+                
+            
+            </div>
+        </div>
+    </div>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+</div>
+ <center>
+ <style>
+* {
+  box-sizing: border-box;
+}
+
+.zoom {
+  padding: 50px;
+  transition: transform .2s;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+}
+
+.zoom:hover {
+  -ms-transform: scale(1.5); /* IE 9 */
+  -webkit-transform: scale(1.5); /* Safari 3-8 */
+  transform: scale(1.5); 
+}
+</style>
+</center>
+    
+{% endblock %}

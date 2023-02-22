@@ -1,0 +1,50 @@
+{% extends 'baseFront.html.twig' %}
+{% block title %}
+
+<title>Article</title>
+ {% endblock %}
+
+
+
+{% block body %}
+    <h1>{{ article.titreArticle }}</h1>
+<div class="blog-text">
+    <div class="mt-5"> 
+    <div class="row">
+    
+    
+        
+          
+           
+            
+              <br>
+                <td>{{ article.imageArticle }}</td>
+           </br>
+            <br>
+                <td>{{ article.descriptionArticle }}</td>
+             </br>
+               <br>
+                <td>{{ article.dateArticle ? article.dateArticle|date('Y-m-d') : '' }}</td>
+               </br>
+       
+           <br>
+        <div>
+           <a href="{{path('app_commentaireu_new',{'id': article.id})}}"class="myButton">Ajouter un commentaire</a>
+
+        </div>
+         </br>
+          <br>
+            <div> 
+                 {% for comment in comments %}  
+                   <div>{{ comment.descriptionCommentaire}} </div>
+                {% endfor %}
+            </div>
+             </br>
+    </div>      
+</div>      
+</div>       
+               
+
+
+    
+{% endblock %}

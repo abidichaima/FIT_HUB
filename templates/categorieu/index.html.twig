@@ -1,0 +1,40 @@
+{% extends 'baseFront.html.twig' %}
+
+{% block title %}
+
+<title>Categorie index</title>
+ {% endblock %} 
+
+{% block body %}
+    <h1>les categories disponibles</h1>
+    <h2 class="my-4">vous pouvez choisir la categorie qui te plaire et consulter les article</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                
+                <th>NomCategorie</th>
+                <th>DescriptionCategory</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for categorie in categories %}
+            <tr>
+                
+                <td>{{ categorie.nomCategorie }}</td>
+                <td>{{ categorie.descriptionCategory }}</td>
+                <td>
+                    <a href="{{ path('app_categorieu_show', {'id': categorie.id}) }}"class="myButton">consulter la liste des articles</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="2">aucune categorie disponible</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}
