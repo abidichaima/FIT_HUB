@@ -1,38 +1,47 @@
-{% extends 'base.html.twig' %}
+{% extends 'baseBack.html.twig' %}
 
-{% block title %}ParticipationSeance index{% endblock %}
 
 {% block body %}
-    <h1>ParticipationSeance index</h1>
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-md-10 col-lg-8">
+                <div class="card">
+                    <div class="card-body">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Type of sport</th>
+                                <th>Date of participation</th>
+                                <th>Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for participationSeance in participation_seances %}
+                                <tr>
+                                    <td>{{ participationSeance.id }}</td>
+                                    <td>{{ participationSeance.typeSport }}</td>
+                                    <td>{{ participationSeance.dateParticipation ? participationSeance.dateParticipation|date('Y-m-d') : '' }}</td>
+                                    <td>
+                                        <a href="{{ path('app_participation_seance_show', {'id': participationSeance.id}) }}" class="btn btn-sm btn-primary">Show</a>
+                                        <a href="{{ path('app_participation_seance_edit', {'id': participationSeance.id}) }}" class="btn btn-sm btn-secondary">Edit</a>
+                                        <a href="{{ path('app_participation_seance_delete', {'id': participationSeance.id}) }}" class="btn btn-sm btn-warning">Delete</a>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>TypeSport</th>
-                <th>DateParticipation</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for participation_seance in participation_seances %}
-            <tr>
-                <td>{{ participation_seance.id }}</td>
-                <td>{{ participation_seance.typeSport }}</td>
-                <td>{{ participation_seance.dateParticipation ? participation_seance.dateParticipation|date('Y-m-d') : '' }}</td>
-
-                <td>
-                    <a href="{{ path('app_participation_seance_show', {'id': participation_seance.id}) }}">show</a>
-                    <a href="{{ path('app_participation_seance_edit', {'id': participation_seance.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_participation_seance_new') }}">Create new</a>
+                                    </td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="4">No records found</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card-footer">
+                        <a href="{{ path('app_participation_seance_new') }}" class="btn btn-sm btn-success">Create New</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

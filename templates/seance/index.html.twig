@@ -15,7 +15,7 @@
                     {% for seance in seances %}
                         <div class="card mb-5">
                             <div class="card-body">
-                                <a href="{{ path('app_seance_show', {'id': seance.id}) }}">
+                                <a href="{{ path('app_seance_showBack', {'id': seance.id}) }}">
                                     <h2 class="card-title">{{ seance.titreSeance }}</h2>
                                     <p class="card-text">{{ seance.descriptionSeance }}</p>
                                     <p class="card-text">{{ seance.coach }}</p>

@@ -75,4 +75,12 @@ class SeanceController extends AbstractController
 
         return $this->redirectToRoute('app_seance_index', [], Response::HTTP_SEE_OTHER);
     }
+    #[Route('/seance/{id}', name: 'app_seance_showBack', methods: ['GET'])]
+    public function show1(Seance $seance): Response
+    {
+        return $this->render('seance/showBack.html.twig', [
+            'seance' => $seance,
+        ]);
+    }
 }
+
