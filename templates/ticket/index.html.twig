@@ -1,0 +1,19 @@
+{% extends 'baseFront.html.twig' %}
+{% block body %}
+    <h1>Book tickets for {{ event.nomEvent }}</h1>
+
+
+    {% if form is defined %}
+        {{ form_start(form) }}
+
+        {{ form_row(form.nom, { 'label': 'Your name' }) }}
+
+        {{ form_row(form.email, { 'label': 'Your email' }) }}
+
+        {{ form_widget(form) }}
+
+        <button type="submit">Book tickets</button>
+
+        {{ form_end(form) }}
+    {% endif %}
+{% endblock %}
