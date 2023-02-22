@@ -1,0 +1,69 @@
+{% extends 'baseBack.html.twig' %}
+
+
+{% block body %}
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">utilisateurs</h4>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                 <thead>
+                  <tr>
+                    <th>Id</th>
+                    <th>Email</th>
+                    <th>Roles</th>
+                    <th>Password</th>
+                    <th>Nom</th>
+                    <th>Prenom</th>
+                    <th>Adresse</th>
+                    <th>Telephone</th>
+                    <th>Date_de_naissance</th>
+                    <th>Genre</th>
+                    <th>Poids</th>
+                    <th>Taille</th>
+                    <th>Experience</th>
+                    <th>Specialite</th>
+                    <th>actions</th>
+                 </tr>
+             </thead>
+           <tbody>
+        {% for utilisateur in utilisateurs %}
+            <tr>
+                <td>{{ utilisateur.id }}</td>
+                <td>{{ utilisateur.email }}</td>
+                <td>{{ utilisateur.roles ? utilisateur.roles|json_encode : '' }}</td>
+                <td>{{ utilisateur.password }}</td>
+                <td>{{ utilisateur.nom }}</td>
+                <td>{{ utilisateur.prenom }}</td>
+                <td>{{ utilisateur.adresse }}</td>
+                <td>{{ utilisateur.telephone }}</td>
+                <td>{{ utilisateur.dateDeNaissance ? utilisateur.dateDeNaissance|date('Y-m-d') : '' }}</td>
+                <td>{{ utilisateur.genre }}</td>
+                <td>{{ utilisateur.poids }}</td>
+                <td>{{ utilisateur.taille }}</td>
+                <td>{{ utilisateur.experience }}</td>
+                <td>{{ utilisateur.specialite }}</td>
+                <td>
+                 
+                    <button class="btn btn-primary mr-2"><a href="{{ path('app_utilisateur_show', {'id': utilisateur.id}) }}">Show</a></button>
+                    <button class="btn btn-primary mr-2"><a href="{{ path('app_utilisateur_edit', {'id': utilisateur.id}) }}">Edit</a></button>
+                </td>
+                </td>
+            </tr>
+               <td colspan="5"></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+     <br>
+                <div align="center">
+                    <button class="btn btn-primary mr-2"><a href="{{ path('app_utilisateur_new') }}">Create new</a></button>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
