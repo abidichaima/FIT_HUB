@@ -120,10 +120,30 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         return $this->password;
     }
+    public function getNom(): string
+    {
+        return $this->nom;
+    }
+    public function getPrenom(): string
+    {
+        return $this->prenom;
+    }
 
     public function setPassword(string $password): self
     {
         $this->password = $password;
+
+        return $this;
+    }
+    public function setNom(string $nom): self
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+    public function setPreom(string $prenom): self
+    {
+        $this->prenom = $prenom;
 
         return $this;
     }

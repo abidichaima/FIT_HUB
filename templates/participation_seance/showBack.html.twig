@@ -1,4 +1,4 @@
-{% extends 'baseBack.html.twig' %}
+
 
 {% block title %}ParticipationSeance{% endblock %}
 
@@ -14,11 +14,7 @@
         <img src="{{ asset('images/sport.jpg') }}" alt="{{ participation_seance.typeSport }}">
         <div class="card-body">
 
-
-            <a href="{{ path('app_participation_seance_edit', {'id': participation_seance.id}) }}" class="card-link">Edit</a>
-            {{ include('participation_seance/_delete_form.html.twig') }}
-        </div>
-        <a href="{{ path('app_participation_seance_index') }}" class="card-link">Back to list</a>
-
+            <a href="{{ path('app_participation_seance_index1') }}" class="card-link">Back to list</a>
+             </div>
     </div>
 {% endblock %}

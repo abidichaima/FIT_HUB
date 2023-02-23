@@ -23,22 +23,11 @@ class Video
     #[ORM\Column(length: 255)]
     private ?string $fileUrlVideo = null;
 
-    #[Assert\NotBlank(message:"Merci de choisir un video")]
-    #[Assert\File(maxSize: '3072M', mimeTypes: ['video/mp4'])]
-    private $uploaded_video;
+    #[ORM\ManyToOne(inversedBy: 'video')]
+    private ?Seance $seance = null;
 
 
-    public function getUploadedVideo()
-    {
-        return $this->uploaded_video;
-    }
 
-    public function setUploadedVideo($uploaded_video): self
-    {
-        $this->uploaded_video = $uploaded_video;
-
-        return $this;
-    }
 
     public function getId(): ?int
     {
@@ -80,6 +69,19 @@ class Video
 
         return $this;
     }
+
+    public function getSeance(): ?Seance
+    {
+        return $this->seance;
+    }
+
+    public function setSeance(?Seance $seance): self
+    {
+        $this->seance = $seance;
+
+        return $this;
+    }
+
 
 
 }

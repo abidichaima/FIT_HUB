@@ -1,39 +1,51 @@
-{% extends 'base.html.twig' %}
+{% extends 'baseBack.html.twig' %}
 
 {% block title %}Video index{% endblock %}
 
 {% block body %}
-    <h1>Video index</h1>
+    <div class="container my-5">
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>TitreVideo</th>
-                <th>DescriptionVideo</th>
-                <th>FileUrlVideo</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for video in videos %}
-            <tr>
-                <td>{{ video.id }}</td>
-                <td>{{ video.titreVideo }}</td>
-                <td>{{ video.descriptionVideo }}</td>
-                <td>{{ video.fileUrlVideo }}</td>
-                <td>
-                    <a href="{{ path('app_video_show', {'id': video.id}) }}">show</a>
-                    <a href="{{ path('app_video_edit', {'id': video.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        <div class="row">
+            {% for video in videos %}
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ video.titreVideo }}</h5>
+                            <p class="card-text">{{ video.descriptionVideo }}</p>
+                            <p class="card-text">{{ video.fileUrlVideo}}</p>
+                            <p class="card-text">{{ video.seance }}</p>
+                            <a href="{{ path('app_video_show', {'id': video.id}) }}" class="btn btn-primary mr-2">Read more</a>
+                            <a href="{{ path('app_video_edit', {'id': video.id}) }}" class="btn btn-secondary">Edit</a>
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                <div class="col">
+                    <p class="text-muted">No records found.</p>
+                </div>
+            {% endfor %}
+        </div>
 
-    <a href="{{ path('app_video_new') }}">Create new</a>
+        <div class="text-center mt-5">
+            <a href="{{ path('app_video_new') }}" class="btn btn-primary">Create new video</a>
+        </div>
+    </div>
+
+    <style>
+        .card {
+            border: none;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+
+        .card-text {
+            font-size: 1rem;
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+        }
+    </style>
 {% endblock %}

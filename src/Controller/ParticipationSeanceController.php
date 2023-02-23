@@ -20,6 +20,13 @@ class ParticipationSeanceController extends AbstractController
             'participation_seances' => $participationSeanceRepository->findAll(),
         ]);
     }
+    #[Route('/participation', name: 'app_participation_seance_index1', methods: ['GET'])]
+    public function index1(ParticipationSeanceRepository $participationSeanceRepository): Response
+    {
+        return $this->render('participation_seance/indexFront.html.twig', [
+            'participation_seances' => $participationSeanceRepository->findAll(),
+        ]);
+    }
 
     #[Route('/new', name: 'app_participation_seance_new', methods: ['GET', 'POST'])]
     public function new(Request $request, ParticipationSeanceRepository $participationSeanceRepository): Response
@@ -31,7 +38,7 @@ class ParticipationSeanceController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $participationSeanceRepository->save($participationSeance, true);
 
-            return $this->redirectToRoute('app_participation_seance_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_participation_seance_new', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('participation_seance/new.html.twig', [
@@ -47,6 +54,15 @@ class ParticipationSeanceController extends AbstractController
             'participation_seance' => $participationSeance,
         ]);
     }
+
+    #[Route('/participation/{id}', name: 'app_participation_seance_show1', methods: ['GET'])]
+    public function show1(ParticipationSeance $participationSeance): Response
+    {
+        return $this->render('participation_seance/showBack.html.twig', [
+            'participation_seance' => $participationSeance,
+        ]);
+    }
+
 
     #[Route('/{id}/edit', name: 'app_participation_seance_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, ParticipationSeance $participationSeance, ParticipationSeanceRepository $participationSeanceRepository): Response

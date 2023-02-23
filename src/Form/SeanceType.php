@@ -3,6 +3,9 @@
 namespace App\Form;
 
 use App\Entity\Seance;
+use App\Entity\User;
+use Doctrine\ORM\EntityRepository;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
@@ -50,15 +53,22 @@ class SeanceType extends AbstractType
                     'data-target' => '#datetimepicker2'
                 ]
             ])
-            ->add('coach')
-            /**->add('id_Coach', ChoiceType::class, [
-                'label' => 'Choisissez',
-                'choices' => [
-                ],
-                'multiple' => true,
+            ->add('coach', EntityType::class, [
+                'class' => User::class,
+                'label' => 'Coach',
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('u')
+                        ->where('u.roles LIKE :role')
+                        ->setParameter('role', '%["ROLE_COACH"]%')
+                        ->orderBy('u.nom', 'ASC');
+                },
+                'choice_label' => function (User $user) {
+                    return $user->getNom() . ' ' . $user->getPrenom();
+                },
+                'multiple' => false,
                 'expanded' => false,
-                'constraints' => [new Choice(['choices' => [new NotBlank()]])]
-            ]);**/;
+                'constraints' => [new NotBlank()],
+            ]);
 
     }
 

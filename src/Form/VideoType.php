@@ -5,8 +5,10 @@ namespace App\Form;
 use App\Entity\Video;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Regex;
 
 class VideoType extends AbstractType
 {
@@ -15,8 +17,15 @@ class VideoType extends AbstractType
         $builder
             ->add('titreVideo')
             ->add('descriptionVideo')
-            ->add('fileUrlVideo')
-            ->add('uploaded_video', FileType::class);
+            ->add('fileUrlVideo', TextType::class, [
+                'constraints' => [
+                    new Regex([
+                        'pattern' => "/^(https?:\/\/)?(www\.)?meet.google.com\/[a-z0-9_-]{3,20}$/i",
+                        'message' => 'Please enter a valid Google Meet link',
+                    ]),
+                ],
+            ])
+            ->add('seance')
         ;
     }
 

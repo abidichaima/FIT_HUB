@@ -51,14 +51,19 @@ class Seance
     #[Assert\NotBlank(message:"Merci de choisir coach")]
     private ?User $coach = null;
 
+    #[ORM\OneToMany(mappedBy: 'seance', targetEntity: Video::class)]
+    private Collection $video;
 
 
     public function __construct()
     {
 
-        $this->video = new ArrayCollection();
+
         $this->participationSeances = new ArrayCollection();
         $this->participant = new ArrayCollection();
+        $this->video = new ArrayCollection();
+
+
 
     }
 
@@ -123,38 +128,6 @@ class Seance
     public function setDateFinSeance(\DateTimeInterface $dateFinSeance): self
     {
         $this->dateFinSeance = $dateFinSeance;
-
-        return $this;
-    }
-
-
-    /**
-     * @return Collection<int, Video>
-     */
-    public function getVideo(): Collection
-    {
-        return $this->video;
-    }
-
-    public function addVideo(Video $video): self
-    {
-        if (!$this->video->contains($video)) {
-            $this->video->add($video);
-            $video->setSeance($this);
-        }
-
-
-        return $this;
-    }
-
-    public function removeVideo(Video $video): self
-    {
-        if ($this->video->removeElement($video)) {
-            // set the owning side to null (unless already changed)
-            if ($video->getSeance() === $this) {
-                $video->setSeance(null);
-            }
-        }
 
         return $this;
     }
@@ -248,5 +221,37 @@ class Seance
         }
         return $count;
     }
+
+    /**
+     * @return Collection<int, Video>
+     */
+    public function getVideo(): Collection
+    {
+        return $this->video;
+    }
+
+    public function addVideo(Video $video): self
+    {
+        if (!$this->video->contains($video)) {
+            $this->video->add($video);
+            $video->setSeance($this);
+        }
+
+        return $this;
+    }
+
+    public function removeVideo(Video $video): self
+    {
+        if ($this->video->removeElement($video)) {
+            // set the owning side to null (unless already changed)
+            if ($video->getSeance() === $this) {
+                $video->setSeance(null);
+            }
+        }
+
+        return $this;
+    }
+
+
 
 }

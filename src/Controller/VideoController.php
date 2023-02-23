@@ -40,6 +40,7 @@ class VideoController extends AbstractController
         ]);
     }
 
+
     #[Route('/{id}', name: 'app_video_show', methods: ['GET'])]
     public function show(Video $video): Response
     {
