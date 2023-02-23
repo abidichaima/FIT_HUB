@@ -28,7 +28,7 @@
                 <td>{{ article.titreArticle }}</td>
                 <td>{{ article.descriptionArticle }}</td>
                 <td>{{ article.dateArticle ? article.dateArticle|date('Y-m-d') : '' }}</td>
-                <td>{{ article.imageArticle }}</td>
+                                <img class="img-fluid" src="/uploads/articles{{ article.imageArticle  }}"  >
                 <td>
                     <a href="{{ path('app_articleu_show', {'id': article.id}) }}"class="myButton">consulter l'article</a>
                     

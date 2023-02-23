@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\CategorieRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CategorieRepository::class)]
@@ -16,9 +17,15 @@ class Categorie
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message : "le nom ne doit pas etre vide")]
+
     private ?string $nomCategorie = null;
 
+
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message : "la description ne doit pas etre vide")]
+
+    #[Assert\Length(min:2 , minMessage : "la description doit avoir au minimum 2 caracteres")]
     private ?string $descriptionCategory = null;
 
     #[ORM\OneToMany(mappedBy: 'categorie', targetEntity: Article::class)]

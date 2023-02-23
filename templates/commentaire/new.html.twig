@@ -1,4 +1,4 @@
-{% extends 'baseFront.html.twig' %}
+{% extends 'baseBack.html.twig' %}
 
 
 {% block title %}
@@ -10,5 +10,5 @@
 
     {{ include('commentaire/_form.html.twig') }}
 
-    <a href="{{ path('app_commentaire_index') }}">back to list</a>
+    <a href="{{ path('app_commentaire_index') }}" class="btn btn-primary">back to list</a>
 {% endblock %}

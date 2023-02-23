@@ -10,6 +10,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+
 
 #[Route('/article')]
 class ArticleController extends AbstractController
@@ -34,7 +38,7 @@ class ArticleController extends AbstractController
 
 
     #[Route('/new', name: 'app_article_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, ArticleRepository $articleRepository): Response
+    public function new(Request $request, ArticleRepository $articleRepository,SluggerInterface $slugger): Response
     {
         $article = new Article();
         $article->setDateArticle(new DateTimeImmutable());
@@ -45,7 +49,19 @@ class ArticleController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $articleRepository->save($article, true);
-
+            /** @var UploadedFile $uploadedFile */
+            $uploadedFile = $form['imageArticle']->getData();
+            $destination = $this->getParameter('kernel.project_dir').'/public/uploads/articles';
+            $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+            $newFile = $originalFilename.'-'.uniqid().'.'.$uploadedFile->guessExtension();
+            $uploadedFile->move(
+                $destination,
+                $newFile
+               );
+               $article->setImageArticle($newFile);
+       $entityManager = $this->getDoctrine()->getManager();
+       $entityManager->persist($article);
+       $entityManager->flush();
             return $this->redirectToRoute('app_article_index', [], Response::HTTP_SEE_OTHER);
         }
 

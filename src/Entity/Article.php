@@ -7,7 +7,11 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+
 use PHPUnit\TextUI\XmlConfiguration\CodeCoverage\Report\Text;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 #[ORM\Entity(repositoryClass: ArticleRepository::class)]
 class Article
@@ -18,6 +22,8 @@ class Article
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message : "le titre ne doit pas etre vide")]
+
     private ?string $titreArticle = null;
 
 
@@ -25,16 +31,24 @@ class Article
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $dateArticle = null;
 
+
     #[ORM\Column(length: 255)]
+    
+   
+
     private ?string $imageArticle = null;
 
     #[ORM\ManyToOne(inversedBy: 'articles')]
+    #[Assert\NotBlank(message : "veuillez choisir une categorie")]
+
     private ?Categorie $categorie = null;
 
     #[ORM\OneToMany(mappedBy: 'article', targetEntity: Commentaire::class)]
     private Collection $commentaires;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Assert\NotBlank(message : "la description ne doit pas etre vide")]
+
     private ?string $descriptionArticle = null;
 
     public function __construct()

@@ -1,4 +1,4 @@
-{% extends 'baseFront.html.twig' %}
+{% extends 'baseBack.html.twig' %}
 {% block title %}
 <title>Commentaire index</title>
 {% endblock %}
@@ -22,9 +22,9 @@
                 <td>{{ commentaire.dateCommentaire ? commentaire.dateCommentaire|date('Y-m-d') : '' }}</td>
                 <td>{{ commentaire.descriptionCommentaire  }}</td>
                 <td>
-                    <a href="{{ path('app_commentaire_show', {'id': commentaire.id}) }}">show</a>
+                    <a href="{{ path('app_commentaire_show', {'id': commentaire.id}) }}"class="btn btn-primary">show</a>
                     
-                    <a href="{{ path('app_commentaire_edit', {'id': commentaire.id}) }}">edit</a>
+                    <a href="{{ path('app_commentaire_edit', {'id': commentaire.id}) }}"class="btn btn-primary">edit</a>
                 </td>
             </tr>
         {% else %}
@@ -35,5 +35,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_commentaire_new') }}">Create new</a>
+    <a href="{{ path('app_commentaire_new') }}"class="btn btn-primary">Create new</a>
 {% endblock %}

@@ -2,10 +2,17 @@
     {{ form_widget(form) }}
     <button class="myButton">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}#}
-{{ form_start(form) }}
-  {{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
+{{ form_start(form,{'attr':{'novalidate':'novalidate'}}) }}
 {% form_theme form 'bootstrap_4_layout.html.twig' %}
-
-    {{ form_widget(form) }}
+   <div class="form.group">
+    {{ form_label(form.descriptionCommentaire,"contenu du commentaire") }}
+     {{ form_widget(form.descriptionCommentaire,{'attr':{'class':'form-control'}}) }}
+     {% if form_errors(form.descriptionCommentaire)is not empty and form.descriptionCommentaire.vars.value|length >= 2 and form.descriptionCommentaire.vars.value|length <= 100 %}
+    
+    <div class="alert alert-danger">
+    {{ form_errors(form) }}
+  </div>
+  {% endif %}
+  </div>
     <button class="myButton">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}

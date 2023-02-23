@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\CommentaireRepository;
 use Doctrine\DBAL\Types\Types;
+use Symfony\Component\Validator\Constraints as Assert;
+
 use Doctrine\ORM\Mapping as ORM;
 use PHPUnit\TextUI\XmlConfiguration\CodeCoverage\Report\Text;
 
@@ -23,9 +25,16 @@ class Commentaire
   
 
     #[ORM\ManyToOne(inversedBy: 'commentaires')]
+    #[Assert\NotBlank(message : "vous devez choisir un article")]
+
     private ?Article $article = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Assert\NotBlank(message : "le contenu ne doit pas etre vide")]
+    #[Assert\Length(max:100 , minMessage : "le contenu du commentaire ne doit pas etre tros long ")]
+    #[Assert\Length(min:2 , minMessage : "le contenu du commentaire ne doit pas etre inferieur a 2 caracteres  ")]
+
+
     private ?string $descriptionCommentaire = null;
 
    

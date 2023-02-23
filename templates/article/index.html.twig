@@ -2,20 +2,31 @@
 
 {% block title %}
 New Article
+<style>
+ 
+    .table td:nth-child(3) {
+        width: 200px;
+        max-width: 200px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+  .table td:nth-child(5) {
+        width: 200px;
+        max-width: 200px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+
+</style>
 {% endblock %}
 {% block body %}
   
 
     <h1>Article index</h1>
-    <style>
-  .table {
-    overflow-x: auto;
-  }
-
-  th, td {
-    text-align: center;
-  }
-</style>
+  
 
 
     <table class="table" align="center" >
@@ -26,7 +37,8 @@ New Article
                 <th>DescriptionArticle</th>
                 <th>DateArticle</th>
                 <th>ImageArticle</th>
-                <th>actions</th>
+                <th>categorie</th>
+                
             </tr>
         </thead>
         <tbody>
@@ -34,12 +46,18 @@ New Article
             <tr>
                 <td>{{ article.id }}</td>
                 <td>{{ article.titreArticle }}</td>
-                <td>{{ article.descriptionArticle| replace({";":"<br/>"})| raw }}</td>
+
+                <td class="scrollable-cell">{{ article.descriptionArticle }}</td>
                 <td>{{ article.dateArticle ? article.dateArticle|date('Y-m-d') : '' }}</td>
-                <td>{{ article.imageArticle }}</td>
+                
+               <td>
+<img class="img-fluid" src="/uploads/articles{{ article.imageArticle  }}"  >
+</td>
+
+                <td>{{ article.categorie }}</td>
                 <td>
-                    <a href="{{ path('app_article_show', {'id': article.id}) }}">show</a>
-                    <a href="{{ path('app_article_edit', {'id': article.id}) }}">edit</a>
+                    <a href="{{ path('app_article_show', {'id': article.id}) }}" class="btn btn-primary">show</a>
+                    <a href="{{ path('app_article_edit', {'id': article.id}) }}" class="btn btn-primary">edit</a>
                 </td>
             </tr>
         {% else %}
@@ -52,5 +70,5 @@ New Article
      </table>
   
 
-    <a href="{{ path('app_article_new') }}">Create new</a>
+    <a href="{{ path('app_article_new') }}" class="btn btn-primary">Create new</a>
 {% endblock %}

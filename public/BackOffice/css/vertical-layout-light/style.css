@@ -10419,6 +10419,25 @@ pre code {
     overflow-x: auto;
     overflow-y: auto;
   }
+  .table {
+    overflow-x: auto;
+  }
+  th, td {
+    white-space: nowrap;
+  }
+  .description {
+    writing-mode: vertical-rl;
+    text-align: center;
+  }
+  .scrollable-cell {
+    max-width: 200px; /* adjust as needed */
+    height: 50px; /* adjust as needed */
+    overflow: auto;
+    white-space: normal !important;
+    word-wrap: break-word;
+    text-align: justify;
+}
+
 
 
 @media (max-width: 575.98px) {
