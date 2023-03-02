@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\TicketRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: TicketRepository::class)]
 class Ticket
@@ -13,20 +14,16 @@ class Ticket
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column]
-    #[Assert\NotNull(message: 'Please enter the availability of the ticket')]
+    #[ORM\Column (nullable: true)]
 
     private ?bool $disponibilite = null;
 
-    #[ORM\Column]
-    #[Assert\NotNull(message: 'Please enter the price of the ticket')]
+    #[ORM\Column (nullable: true)]
     #[Assert\Positive(message: 'The price must be a positive integer')]
 
     private ?int $prix = null;
 
-    #[ORM\Column]
-    #[Assert\NotNull(message: 'Please enter the maximum number of tickets')]
-    #[Assert\Positive(message: 'The maximum number of tickets must be a positive integer')]
+    #[ORM\Column (nullable: true)]
     private ?int $nombreMax = null;
 
     #[ORM\ManyToOne(inversedBy: 'tickets')]
@@ -35,8 +32,7 @@ class Ticket
     #[ORM\ManyToOne(inversedBy: 'tickets')]
     private ?Utilisateur $utilisateurs = null;
 
-    #[ORM\Column(length: 255)]
-    #[Assert\NotBlank(message: 'Please enter your name')]
+    #[ORM\Column(length: 255, nullable: true)]
     #[Assert\Length(
         min: 4,
         max: 50,
@@ -46,13 +42,13 @@ class Ticket
 
    private ?string $nom = null;
 
-    #[ORM\Column(length:255)]
-    #[Assert\NotBlank(message:"Please enter your email")]
+    #[ORM\Column(length:255, nullable: true)]
+    #[Asset\NotBlank()]
     #[Assert\Email(message:"Please enter a valid email address")]
    private ?string $email = null;
 
 
-    #[ORM\Column(type:"datetime")]
+    #[ORM\Column(type:"datetime",  nullable: true)]
     
    private ?\DateTimeInterface $bookingDate = null;
 

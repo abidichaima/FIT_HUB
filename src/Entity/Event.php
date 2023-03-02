@@ -41,7 +41,7 @@ class Event
     #[ORM\Column(length: 255)]
     private ?string $type = null;
 
-    #[ORM\OneToMany(mappedBy: 'event', targetEntity: Ticket::class,cascade: ["remove"])]
+    #[ORM\OneToMany(mappedBy: 'event', targetEntity: Ticket::class)]
     private Collection $tickets;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
