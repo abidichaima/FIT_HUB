@@ -14,21 +14,25 @@ class Event
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups("events")]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups("events")]
     #[Assert\NotBlank(message: 'Please enter the event name')]
     #[Assert\Length(min: 5, max: 255, minMessage: 'The name of the event should be at least {{ limit }} characters long.', maxMessage: 'The name of the event should not exceed {{ limit }} characters.')]
 
     private ?string $nomEvent = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups("events")]
     #[Assert\NotBlank(message: 'Please enter the event description')]
     #[Assert\Length(min: 10, max: 255, minMessage: 'The description of the event should be at least {{ limit }} characters long.', maxMessage: 'The description of the event should not exceed {{ limit }} characters.')]
 
     private ?string $description = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups("events")]
     #[Assert\NotBlank(message: 'Please enter the event location')]
     #[Assert\Length(min: 5, max: 255, minMessage: 'The location of the event should be at least {{ limit }} characters long.', maxMessage: 'The location of the event should not exceed {{ limit }} characters.')]
 
@@ -36,15 +40,18 @@ class Event
 
     #[Assert\NotBlank(message: 'Please enter the event date and time')]
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    #[Groups("events")]
     private ?\DateTimeInterface $date = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups("events")]
     private ?string $type = null;
 
     #[ORM\OneToMany(mappedBy: 'event', targetEntity: Ticket::class)]
     private Collection $tickets;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[Groups("events")]
     #[Assert\Image(
         mimeTypes: ['image/jpeg', 'image/png'],
         mimeTypesMessage: 'Please upload a valid image (JPEG or PNG format)'

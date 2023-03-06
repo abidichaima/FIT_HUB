@@ -1,6 +1,36 @@
 {% extends 'baseFront.html.twig' %}
 
 {% block title %}Events!{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .pagination a {
+            color: #333;
+            text-decoration: none;
+            padding: 10px;
+            margin-right: 5px;
+            border-radius: 5px;
+            background-color: #eee;
+        }
+
+        .pagination .current {
+            color: #fff;
+            background-color: teal;
+        }
+
+        .pagination a:hover {
+            background-color: #ccc;
+            color: #fff;
+        }
+    </style>
+    {% endblock %}
 
 {% block body %}
     <body style="background-image:url('{{ asset('uploads/events/vectobg.jpg') }}'); background-size: cover; background-position: center; color: #fff; margin-top:10%">
@@ -8,7 +38,7 @@
         <h1 style="text-align: center;">Upcoming Events</h1>
 
         <div class="grid-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-gap: 20px;">
-            {% for event in events %}
+            {% for event in pagination %}
             <div class="grid-item" style="background-color: rgba(255, 255, 255, 0.2); border-radius: 10px; padding: 20px; display: flex; justify-content: space-between; align-items: center;">
                 {% if event.image %}
                     <img src="{{ asset('uploads/events/' ~ event.image) }}" alt="{{ event.nomEvent }}" style="width: 300px; margin-right: 20px;">
@@ -25,6 +55,11 @@
                 </div>
             </div>
             {% endfor %}
+            {# display pagination links #}
+           
         </div>
+         <div class="pagination">
+                {{ knp_pagination_render(pagination) }}
+            </div>
     </body>
 {% endblock %}

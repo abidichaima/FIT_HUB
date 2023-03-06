@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\TicketRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\MaxDepth;
 
 #[ORM\Entity(repositoryClass: TicketRepository::class)]
 class Ticket
@@ -12,6 +13,8 @@ class Ticket
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups("tickets")]
+
     private ?int $id = null;
 
     #[ORM\Column (nullable: true)]
@@ -19,20 +22,24 @@ class Ticket
     private ?bool $disponibilite = null;
 
     #[ORM\Column (nullable: true)]
+    #[Groups("tickets")]
     #[Assert\Positive(message: 'The price must be a positive integer')]
 
     private ?int $prix = null;
 
     #[ORM\Column (nullable: true)]
+    #[Groups("tickets")]
     private ?int $nombreMax = null;
 
     #[ORM\ManyToOne(inversedBy: 'tickets')]
+    #[MaxDepth(1)]
     private ?Event $event = null;
 
     #[ORM\ManyToOne(inversedBy: 'tickets')]
     private ?Utilisateur $utilisateurs = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Groups("tickets")]
     #[Assert\Length(
         min: 4,
         max: 50,
@@ -43,13 +50,14 @@ class Ticket
    private ?string $nom = null;
 
     #[ORM\Column(length:255, nullable: true)]
+    #[Groups("tickets")]
     #[Asset\NotBlank()]
     #[Assert\Email(message:"Please enter a valid email address")]
    private ?string $email = null;
 
 
     #[ORM\Column(type:"datetime",  nullable: true)]
-    
+    #[Groups("tickets")]
    private ?\DateTimeInterface $bookingDate = null;
 
 
@@ -105,7 +113,7 @@ class Ticket
 
         return $this;
     }
-
+/*
     public function getUtilisateurs(): ?Utilisateur
     {
         return $this->utilisateurs;
@@ -122,7 +130,7 @@ class Ticket
     {
         return $this->utilisateur;
     }
-
+*/
     public function getNom(): ?string
     {
         return $this->nom;

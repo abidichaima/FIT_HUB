@@ -18,27 +18,151 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 use Doctrine\ORM\EntityManagerInterface;
 
 use App\Form\TicketType;
+use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Knp\Component\Pager\PaginatorInterface;
+use Symfony\Component\Serializer\SerializerInterface;
+
 
 
 class EventController extends AbstractController
 {
-    #[Route('/event', name: 'app_event')]
-    public function index(EventRepository $eventRepository): Response
-    {
-        $events = $eventRepository->findAll();
-    
-        return $this->render('event/index.html.twig', [
-            'events' => $events
-        ]);
-    }
-     #[Route("/event", name:"app_event")]
-    
-    public function eventsList(): Response
+
+    #[Route('/allEvents', name: 'list')]
+    public function getEvents():JsonResponse
     {
         $events = $this->getDoctrine()->getRepository(Event::class)->findAll();
+        function formatDateTime($dateTime)
+        {
+            return $dateTime->format('Y-m-d H:i:s');
+        }
 
+        // Map the seances to an array of events in the required format
+        $events = array_map(function ($events) {
+            $tickets = $events->getTickets();
+            return [
+                'id' => $events->getId(),
+                'nomE' => $events->getNomEvent(),
+                'date' => formatDateTime($events->getDate()),
+                'type' => $events->getType(),
+                'description' => $events->getDescription(),
+                'image'=>$events->getImage(),
+
+                //'tickets' => $tickets ? $tickets->getEmail() . ' ' . $tickets->getNom() : '',
+            ];
+        }, $events);
+        return new JsonResponse($events);
+        
+    }
+
+    #[Route('/event/{id}', name: 'eventjson')]
+    public function eventId($id, SerializerInterface $serializer, EventRepository $eventRepository): Response
+    {
+        $events = $eventRepository->find($id);
+        $eventArray = [];
+    
+        if (!$events) {
+            return new JsonResponse(['message' => 'event not found'], Response::HTTP_NOT_FOUND);
+        }
+    
+        function formatDateTime($dateTime)
+        {
+            return $dateTime->format('Y-m-d H:i:s');
+        }
+
+        // Map the seances to an array of events in the required format
+        $eventArray[] = 
+             [
+                'id' => $events->getId(),
+                'nomE' => $events->getNomEvent(),
+                'date' => formatDateTime($events->getDate()),
+                'type' => $events->getType(),
+                'description' => $events->getDescription(),
+                'image'=>$events->getImage(),
+
+                //'tickets' => $tickets ? $tickets->getEmail() . ' ' . $tickets->getNom() : '',
+            ];
+        
+        // Serialize the array to JSON
+        $jsonContent = $serializer->serialize($eventArray, 'json');
+    
+        // Create a new JSON response with the formatted data
+        return new JsonResponse($jsonContent, Response::HTTP_OK, [], true);
+    }
+    #[Route('/addEventJSON/new', name: 'addEventJSON')]
+    public function addEventJSON(Request $req,NormalizerInterface $normalizer): Response
+    {
+        $em= $this->getDoctrine()->getManager();
+        $events = new Event();
+        $events->setNomEvent($req->get('nomEvent'));
+        $events->setDescription($req->get('description'));
+        $events->setLocation($req->get('location'));
+        $events->setType($req->get('type'));
+        $dateStr = $req->get('date');
+$date = new \DateTime($dateStr);
+$events->setDate($date);
+        
+        $events->setImage($req->get('image'));
+        $em->persist($events);
+        $em->flush();
+        $jsonContent = $normalizer->normalize($events,'json',['groups'=>'events']);
+        dd($events);
+
+        return new  Response (json_encode($jsonContent));       
+    
+    }
+
+    #[Route('/deleteEventJSON/{id}', name: 'deleteEventJSON')]
+        
+        public function deleteEventJSON($id, Request $req, EntityManagerInterface $entityManager): JsonResponse
+   {
+       $em = $this->getDoctrine()->getManager();
+       $event = $em->getRepository(Event::class)->find($id);
+       $em->remove($event);
+       $em->flush();
+   
+       return new JsonResponse(['status' => 'success', 'message' => 'event deleted.']);
+   }
+    
+    
+
+   #[Route('/updateEventJSON/{id}', name: 'updateEventJSON')]
+
+   public function UpdateEventJSON($id, Request $req, NormalizerInterface $Normalizer)
+   {
+       $em = $this->getDoctrine()->getManager();
+       $events = $this->getDoctrine()->getRepository(Event::class)->find($id);
+       $events->setNomEvent($req->get('nomEvent'));
+       $events->setDescription($req->get('description'));
+       $events->setLocation($req->get('location'));
+       $events->setType($req->get('type'));
+       $dateStr = $req->get('date');
+$date = new \DateTime($dateStr);
+$events->setDate($date);
+       
+       $events->setImage($req->get('image'));
+       $em->flush();
+       $jsonContent = $Normalizer->normalize($events, 'json', ['groups' => 'post:read']);
+       return new Response("Update successfully" . json_encode($jsonContent));
+   }
+
+
+    
+    #[Route("/event", name:"app_event")]
+    public function eventsList(EventRepository $eventRepository, Request $request, PaginatorInterface $paginator): Response
+    {
+        $events = $eventRepository->findBy([], ['date' => 'DESC']);
+    
+        $pagination = $paginator->paginate(
+            $events,
+            $request->query->getInt('page', 1),
+            2
+        );
+    
         return $this->render('event/index.html.twig', [
-            'events' => $events,
+            'pagination' => $pagination,
         ]);
     }
 
@@ -57,12 +181,21 @@ class EventController extends AbstractController
    
 
     #[Route('eventadmin', name: 'app_event_admin')]
-    public function adminindex(EventRepository $eventRepository): Response
+    public function adminindex(EventRepository $eventRepository,Request $request,PaginatorInterface $paginator): Response
+
     {
-        $events = $eventRepository->findAll();
+        $events = $eventRepository->findBy([], ['date' => 'DESC']);
+    
+        $pagination = $paginator->paginate(
+            $events,
+            $request->query->getInt('page', 1),
+            2
+        );
+    
         return $this->render('eventadmin/index.html.twig', [
-            'events' => $events,
+            'pagination' => $pagination,
         ]);
+   
     }
 
     #[Route('eventadmin/new', name: 'app_event_admin_new')]
