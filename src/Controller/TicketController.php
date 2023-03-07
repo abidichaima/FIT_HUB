@@ -277,20 +277,26 @@ if ($ticketCount >= $ticket->getNombreMax()) {
             $result->saveToFile( $pathqr.'/qr-code/'.$namePng);
             $pdf = new TCPDF();
             $pdf->AddPage();
-            $pdf->WriteHTML('<h1 style="color: #0099ff; font-size: 24px;">We hope your ticket finds you well</h1>');
+            $pdf->Rect(10, 10, 190, 265, 'D');
+
+            $pdf->Image($pathqr."/logo2.jpg", 15, 15, 50, 0,);
+            $pdf->SetXY(50, 50);
+
+
+            $pdf->WriteHTML('<h1 style="color: #0099ff; font-size: 20px;">We hope your ticket finds you well</h1>');
             $pdf->SetMargins(15, 15, 15);
-            $pdf->SetFillColor(245, 245, 245); // light gray
+            $pdf->SetFillColor(153, 255, 255); // light gray
             $pdf->SetFont('Helvetica', 'B', 20);
             
             $pdf->SetMargins(25, 25, 25); // Left, top, and right margins
             
             $pdf->SetFont('Helvetica', 'B', 16);
-            $pdf->Cell(50, 10, 'Event Name:', 0, 0);
+            $pdf->Cell(50, 10, '', 0, 0);
             $pdf->SetFont('Helvetica', '', 16);
             $pdf->Cell(0, 10, $event->getNomEvent(), 0, 1);
             
             $pdf->SetFont('Helvetica', 'B', 16);
-            $pdf->Cell(50, 10, 'Guest name:', 0, 0);
+            $pdf->Cell(50, 10, 'Guest:', 0, 0);
             $pdf->SetFont('Helvetica', '', 16);
             $pdf->Cell(0, 10, $ticket->getNom(), 0, 1);
             
@@ -344,18 +350,10 @@ if ($ticketCount >= $ticket->getNombreMax()) {
             'form' => $form->createView(),
         ]);
     }
-    #[Route('/event/{eventId}/ticket/{id}/ticketpdf', name: 'event_send_ticket')]
-    public function tiketpage(Request $request, Ticket $ticket, EntityManagerInterface $entityManager): Response
-    {
 
-    return $this->render('ticket/ticketpdf.html.twig', [
-        'ticket' => $ticket,
-        'form' => $form->createView(),
-    ]);
-}
-    
+    /*
      #[Route("/PDF_Reserver", name:"PDF_Reserver")]
-    public function PDF_Reserver(ReservationVoyageRepository $reservationVoyageRepository)
+    public function PDF_Reserver(TicketRepository $ticketRepository)
     {
         // Configure Dompdf according to your needs
         $pdfOptions = new Options();
@@ -364,7 +362,7 @@ if ($ticketCount >= $ticket->getNombreMax()) {
         // Instantiate Dompdf with our options
         $dompdf = new Dompdf($pdfOptions);
         // Retrieve the HTML generated in our twig file
-        $html = $this->renderView('ticket/pdf.html.twig', [
+        $html = $this->renderView('ticket/ticketpdf.html.twig', [
             'ticket' => $ticketRepository->findAll(),
         ]);
 
@@ -376,9 +374,9 @@ if ($ticketCount >= $ticket->getNombreMax()) {
         // Render the HTML as PDF
         $dompdf->render();
         // Output the generated PDF to Browser (inline view)
-        $dompdf->stream("Liste_Des_Reservation_Voyages.pdf", [
+        $dompdf->stream("Liste_Des_Tickets.pdf", [
             "ticket" => true
         ]);
-    }
+    }*/
    
 }

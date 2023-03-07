@@ -1,6 +1,6 @@
 <h1>Your Ticket</h1>
 
-<p>Event: {{ ticket.event.nomEvent }}</p>
+<p>Event: {{ ticket.nom }}</p>
 <p>Date: {{ ticket.bookingDate|date('F j, Y, g:i a') }}</p>
 
 	{% if qrCodeImage %}

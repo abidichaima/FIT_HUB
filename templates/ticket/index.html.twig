@@ -3,9 +3,14 @@
 {% block body %}
   <div style="width: 50%; margin: 0 auto;">
     <h1 style="text-align: center; font-size: 36px;">Book Tickets for {{ event.nomEvent }}</h1>
-    <p>{{ event.description }}</p>
+ {% if event.image %}
+        <img src="{{ asset('uploads/events/' ~ event.image) }}" style="text-align:center; max-width:auto; height: 300px; margin-top: 5%;">
+    {% endif %}
+    <p style="color:blue; font-size:24px">{{ event.description  }}</p>
     <p>Location: {{ event.location }}</p>
     <p>Date: {{ event.date|date('Y-m-d H:i') }}</p>
+    <p>Prix: {{ ticket.prix}} TND</p>
+
        {{form_start(form,{'attr':{'novalidate':'novalidate'}} )}}
 
       <div style="display: flex; flex-direction: column; margin-bottom: 20px;">
