@@ -40,19 +40,12 @@ class Ticket
 
     #[ORM\Column(length: 255, nullable: true)]
     #[Groups("tickets")]
-    #[Assert\Length(
-        min: 4,
-        max: 50,
-        minMessage: 'Your name must be at least {{ limit }} characters long',
-        maxMessage: 'Your name cannot be longer than {{ limit }} characters'
-    )]
+   
 
    private ?string $nom = null;
 
     #[ORM\Column(length:255, nullable: true)]
     #[Groups("tickets")]
-    #[Asset\NotBlank()]
-    #[Assert\Email(message:"Please enter a valid email address")]
    private ?string $email = null;
 
 
@@ -166,11 +159,12 @@ class Ticket
 
         return $this;
     }
+    /*
     public function setUtilisateur(?Utilisateur $utilisateur): self
     {
         $this->utilisateur = $utilisateur;
 
         return $this;
-    }
+    }*/
     
 }

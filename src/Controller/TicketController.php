@@ -79,7 +79,7 @@ class TicketController extends AbstractController
         
     }
 
-    #[Route('/ticket/{id}', name: 'ticketjson')]
+    #[Route('/ticketjson/{id}', name: 'ticketjson')]
     public function ticketId($id, SerializerInterface $serializer, TicketRepository $ticketRepository): Response
     {
         $tickets = $ticketRepository->find($id);
@@ -97,7 +97,7 @@ class TicketController extends AbstractController
             'nombreMax' => $tickets->getNombreMax(),
             'disponibilite' => $tickets->isDisponibilite(),
             'email' => $tickets->getEmail(),
-            'bookingDate' => $tickets->getBookingDate()->format('Y-m-d H:i:s'),
+            //'bookingDate' => $tickets->getBookingDate()->format('Y-m-d H:i:s'),
         ];
     
         // Serialize the array to JSON
@@ -118,9 +118,9 @@ class TicketController extends AbstractController
         $tickets->setDisponibilite($req->get('disponibilite'));
         $tickets->setPrix($req->get('prix'));
         $tickets->setNombreMax($req->get('nombreMax'));
-        $dateStr = $req->get('bookingDate');
-        $date = new \DateTime($dateStr);
-        $events->setBookingDate($date);
+        //$dateStr = $req->get('bookingDate');
+       // $date = new \DateTime($dateStr);
+        //$tickets->setBookingDate($date);
                 
         $em->persist($tickets);
         $em->flush();
@@ -142,9 +142,9 @@ class TicketController extends AbstractController
         $tickets->setDisponibilite($request->get('disponibilite'));
         $tickets->setPrix($request->get('prix'));
         $tickets->setNombreMax($request->get('nombreMax'));
-        $dateStr = $request->get('bookingDate');
-        $date = new \DateTime($dateStr);
-        $tickets->setBookingDate($date);
+        //$dateStr = $request->get('bookingDate');
+        //$date = new \DateTime($dateStr);
+       // $tickets->setBookingDate($date);
         $em->flush();
         $jsonContent = $Normalizer->normalize($tickets, 'json', ['groups' => 'post:read']);
         return new Response("Update successfully" . json_encode($jsonContent));
@@ -215,10 +215,34 @@ class TicketController extends AbstractController
           
            
            $ticket = new Ticket();
-   
-          
+           $ticket->setEvent($event);
+           
+           
+           $bookingDate = new \DateTime();
+$ticket->setBookingDate($bookingDate);
 
-       $form = $this->createForm(TicketType::class);
+$existingTicket = $ticketRepository->findOneBy(['event' => $event], ['id' => 'ASC']);
+if ($existingTicket) {
+    $ticket->setPrix($existingTicket->getPrix());
+    $ticket->setNombreMax($existingTicket->getNombreMax());
+    $ticket->setDisponibilite($existingTicket->isDisponibilite());
+} else {
+    $ticket->setPrix(null);
+    $ticket->setNombreMax(null);
+    $ticket->setDisponibilite(null);
+}
+$ticketCount = $ticketRepository->count(['event' => $event]);
+
+if ($ticketCount >= $ticket->getNombreMax()) {
+    // Return a response indicating that the event is not available
+    $ticket->setDisponibilite(false);
+
+    return $this->render('ticket/unavailable.html.twig', [
+        'event' => $event,
+    ]);
+}         
+
+       $form = $this->createForm(TicketType::class, $ticket);
        $form->handleRequest($request);
 
 
@@ -227,7 +251,6 @@ class TicketController extends AbstractController
             $entityManager->persist($ticket);
             $entityManager->flush();
             $email = $form->get('email')->getData();
-
 
 
 
@@ -252,31 +275,47 @@ class TicketController extends AbstractController
 
             $namePng =uniqid('',''). '.png';
             $result->saveToFile( $pathqr.'/qr-code/'.$namePng);
-
             $pdf = new TCPDF();
-$pdf->AddPage();
-$pdf->SetFont('times', '', 12);
-$pdf->WriteHTML("<h1>We hope your ticket finds you well</h1>");
-
-$pdf->WriteHTML("<p>Event Name: {$event->getNomEvent()}</p>");
-$pdf->WriteHTML("<p>Ticket Price: {$ticket->getPrix()}</p>");
-$pdf->WriteHTML("<p>=please present your ticket at the reception to access the event hall</p>");
-
-$pdf->Image($pathqr.'/qr-code/'.$namePng);
-$pdfData = $pdf->Output('', 'S');
-            //mailing
-            //on cree le message
+            $pdf->AddPage();
+            $pdf->WriteHTML('<h1 style="color: #0099ff; font-size: 24px;">We hope your ticket finds you well</h1>');
+            $pdf->SetMargins(15, 15, 15);
+            $pdf->SetFillColor(245, 245, 245); // light gray
+            $pdf->SetFont('Helvetica', 'B', 20);
+            
+            $pdf->SetMargins(25, 25, 25); // Left, top, and right margins
+            
+            $pdf->SetFont('Helvetica', 'B', 16);
+            $pdf->Cell(50, 10, 'Event Name:', 0, 0);
+            $pdf->SetFont('Helvetica', '', 16);
+            $pdf->Cell(0, 10, $event->getNomEvent(), 0, 1);
+            
+            $pdf->SetFont('Helvetica', 'B', 16);
+            $pdf->Cell(50, 10, 'Guest name:', 0, 0);
+            $pdf->SetFont('Helvetica', '', 16);
+            $pdf->Cell(0, 10, $ticket->getNom(), 0, 1);
+            
+            $pdf->SetFont('Helvetica', 'B', 16);
+            $pdf->Cell(50, 10, 'Event address:', 0, 0);
+            $pdf->SetFont('Helvetica', '', 16);
+            $pdf->Cell(0, 10, $event->getLocation(), 0, 1);
+            
+            $pdf->SetFont('Helvetica', '', 14);
+            $pdf->Cell(0, 10, 'Please present your ticket at the reception to access the event hall', 0, 1);
+            
+            $pdf->Image($pathqr.'/qr-code/'.$namePng);
+            $pdfData = $pdf->Output('', 'S');
+            
+            // Mailing
+            // Create the message
             $message = (new TemplatedEmail())
-                //recipient
                 ->from('fithubg@gmail.com')
-                //destinataire
                 ->to($email)
-                ->subject("Confirmation de Reservation")
-                ->html("<p>bonjour,". $ticket->getNom()."</p><p> Ceci est une confirmation de votre reservation ". $ticket->getId()."</p><p> Merci pour votre Confiance </p>". $ticket->getNom().  "<p> Coridalement <br/> Fithub team </p>")
+                ->subject('Confirmation de Reservation')
+                ->html("<p>Bonjour  , </p><p>Ceci est une confirmation de votre réservation Numero {$ticket->getId()}.</p><p>Merci pour votre confiance!</p><p>Cordialement,<br/>L'équipe Fithub</p>")
                 ->attach($pdfData, 'ticket.pdf', 'application/pdf')
                 ->embedFromPath($pathqr.'/qr-code/'.$namePng);
             $mailer->send($message);
-
+            
             return $this->redirectToRoute('app_event');
         }
 

@@ -24,7 +24,10 @@
         <tbody>
             {% for ticket in tickets %}
                 <tr>
+
                     <td>{{ ticket.id }}</td>
+                                                        <td>{{ ticket.event.getId() }}</td>
+
                                         <td>{{ ticket.prix }}</td>
 
                     <td>{{ ticket.nombreMax }}</td>
