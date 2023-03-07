@@ -5,9 +5,12 @@
 
 
 {% block body %}
+<body>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
     <h1>Categorie index</h1>
 
-    <table class="table">
+    <table class="table" >
         <thead>
             <tr>
                 <th>Id</th>
@@ -23,8 +26,12 @@
                 <td>{{ categorie.nomCategorie }}</td>
                 <td>{{ categorie.descriptionCategory }}</td>
                 <td>
-                    <a href="{{ path('app_categorie_show', {'id': categorie.id}) }}"class="btn btn-primary">show</a>
-                    <a href="{{ path('app_categorie_edit', {'id': categorie.id}) }}"class="btn btn-primary">edit</a>
+                    <a href="{{ path('app_categorie_show', {'id': categorie.id}) }}"class="material-icons">
+visibility
+</a>
+                    <a href="{{ path('app_categorie_edit', {'id': categorie.id}) }}"class="material-icons">
+edit
+</a>
                 </td>
             </tr>
         {% else %}
@@ -35,5 +42,8 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_categorie_new') }}"class="btn btn-primary">Create new</a>
+    <a href="{{ path('app_categorie_new') }}"class="material-icons">
+add
+</a>
+    </body>
 {% endblock %}

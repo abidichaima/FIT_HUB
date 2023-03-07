@@ -16,7 +16,7 @@
   <div class="form.group">
     {{ form_label(form.descriptionCategory,"description du categorie") }}
      {{ form_widget(form.descriptionCategory,{'attr':{'class':'form-control'}}) }}
-     {% if form_errors(form.descriptionCategory) is not empty and form.descriptionCategory.vars.value|length < 5 %}
+     {% if form_errors(form.descriptionCategory) is not empty and form.descriptionCategory.vars.value|length < 5  and form.descriptionCategory.vars.value|length >100 %}
    
     <div class="alert alert-danger">
     {{ form_errors(form) }}

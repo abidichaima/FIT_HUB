@@ -9,7 +9,7 @@
 <div class="form.group">
     {{ form_label(form.titreArticle,"Titre du l'article") }}
      {{ form_widget(form.titreArticle,{'attr':{'class':'form-control'}}) }}
-    {% if  form_errors(form.titreArticle) is not empty %}
+    {% if  form_errors(form.titreArticle) is not empty and form.titreArticle.vars.value|length < 3  and form.titreArticle.vars.value|length >100 %} 
     <div class="alert alert-danger">
     {{ form_errors(form) }}
   </div>
@@ -25,7 +25,7 @@
    {% endif %}
    </div>
   <div class ="col-lg-7">
-  {{ form_label(form.imageArticle,"categorie de l'article") }}
+  {{ form_label(form.imageArticle,"l'image de l'article") }}
       {{ form_row(form.imageArticle) }}
 </div>
     <div class="form.group">
@@ -37,10 +37,13 @@
   </div>
    {% endif %}
    </div>
+   
+   
     <div class="form.group">
    
     {{ form_widget(form) }}
     
    </div>
-  <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
+   <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
+
 {{ form_end(form) }}

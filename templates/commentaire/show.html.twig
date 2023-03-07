@@ -3,7 +3,14 @@
 <title>Commentaire</title>
  {% endblock %}
 {% block body %}
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+          <a href="{{ path('app_commentaire_index') }}"class="material-icons"> arrow_back_ios</a>
+
     <h1>Commentaire</h1>
+        <a href="{{ path('app_commentaire_edit', {'id': commentaire.id}) }}"class="material-icons">
+edit
+</a>
 
     <table class="table">
         <tbody>
@@ -23,9 +30,8 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_commentaire_index') }}"class="btn btn-primary">back to list</a>
 
-    <a href="{{ path('app_commentaire_edit', {'id': commentaire.id}) }}"class="btn btn-primary">edit</a>
+
 
     {{ include('commentaire/_delete_form.html.twig') }}
 {% endblock %}

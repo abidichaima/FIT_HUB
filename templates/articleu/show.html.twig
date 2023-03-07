@@ -1,50 +1,72 @@
 {% extends 'baseFront.html.twig' %}
+
 {% block title %}
+    Article
+{% endblock %}
 
-<title>Article</title>
- {% endblock %}
-
-
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/article.css') }}" />
+{% endblock %}
 
 {% block body %}
-    <h1>{{ article.titreArticle }}</h1>
-<div class="blog-text">
-    <div class="mt-5"> 
-    <div class="row">
-    
-    
-        
-          
-           
-            
-              <br>
-                                <img class="img-fluid" src="/uploads/articles{{ article.imageArticle  }}"  >
-           </br>
-            <br>
-                <td>{{ article.descriptionArticle }}</td>
-             </br>
-               <br>
-                <td>{{ article.dateArticle ? article.dateArticle|date('Y-m-d') : '' }}</td>
-               </br>
-       
-           <br>
-        <div>
-           <a href="{{path('app_commentaireu_new',{'id': article.id})}}"class="myButton">Ajouter un commentaire</a>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <a href="{{ path('app_categorieu_show', {'id': article.categorie.id}) }}"  class="material-icons">
+arrow_back_ios
 
-        </div>
-         </br>
-          <br>
-            <div> 
-                 {% for comment in comments %}  
-                   <div>{{ comment.descriptionCommentaire}} </div>
-                {% endfor %}
+                </a>
             </div>
-             </br>
-    </div>      
-</div>      
-</div>       
-               
-
-
-    
+        </div>
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="card mb-3">
+                    <img src="{{ asset('uploads/articles/' ~ article.imageArticle) }}" class="card-img-top" alt="Article image">
+                    <div class="card-body">
+                        <h1 class="card-title">{{ article.titreArticle }}</h1>
+                        <p class="card-text">{{ article.descriptionArticle }}</p>
+                        <p class="card-text"><small class="text-muted">{{ article.dateArticle ? article.dateArticle|date('Y-m-d') : '' }}</small></p>
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <a href="https://www.facebook.com/sharer/sharer.php?u={{ absolute_url(path('app_articleu_show', {id: article.id})) }}" >
+                                  
+                                    <span class="material-icons">
+share
+</span>
+                                </a>
+                            </div>
+                            <div>
+                                <a href="{{ path('app_commentaireu_new', {'id': article.id}) }}" >
+                                    <span class="material-icons">
+insert_comment
+</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h2 class="mb-3">Commentaires</h2>
+                {% if comments|length > 0 %}
+                    {% for comment in comments %}
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <p class="card-text">
+                                <h4>{{ comment.nickname }}</h4>
+                                {{ comment.descriptionCommentaire }}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="alert alert-info" role="alert">
+                        Il n'y a pas encore de commentaires pour cet article.
+                    </div>
+                {% endif %}
+            </div>
+          
+        </div>
+    </div>
 {% endblock %}
+

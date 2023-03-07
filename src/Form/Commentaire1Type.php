@@ -12,10 +12,11 @@ class Commentaire1Type extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-           
-            ->add('descriptionCommentaire')
-            
+        ->add('email_c')
+        ->add('nickname')
+        ->add('descriptionCommentaire')
         ;
+            
     }
 
     public function configureOptions(OptionsResolver $resolver): void

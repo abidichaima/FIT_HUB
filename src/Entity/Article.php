@@ -23,6 +23,8 @@ class Article
 
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank(message : "le titre ne doit pas etre vide")]
+    #[Assert\Length(min:3, minMessage : "le nom ne doit pas etre inferieur a 5 caracteres")]
+    #[Assert\Length(max:100, maxMessage : "le nom ne doit pas etre trop long")]
 
     private ?string $titreArticle = null;
 
@@ -31,19 +33,17 @@ class Article
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $dateArticle = null;
 
-
     #[ORM\Column(length: 255)]
     
-   
-
     private ?string $imageArticle = null;
 
     #[ORM\ManyToOne(inversedBy: 'articles')]
+    
     #[Assert\NotBlank(message : "veuillez choisir une categorie")]
 
     private ?Categorie $categorie = null;
 
-    #[ORM\OneToMany(mappedBy: 'article', targetEntity: Commentaire::class)]
+    #[ORM\OneToMany(mappedBy: 'article', targetEntity: Commentaire::class,cascade: ["remove"])]
     private Collection $commentaires;
 
     #[ORM\Column(type: Types::TEXT)]

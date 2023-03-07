@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\CommentaireRepository;
 use Doctrine\DBAL\Types\Types;
 use Symfony\Component\Validator\Constraints as Assert;
+use App\Validator\Constraints as AppAssert;
 
 use Doctrine\ORM\Mapping as ORM;
 use PHPUnit\TextUI\XmlConfiguration\CodeCoverage\Report\Text;
@@ -31,11 +32,27 @@ class Commentaire
 
     #[ORM\Column(type: Types::TEXT)]
     #[Assert\NotBlank(message : "le contenu ne doit pas etre vide")]
-    #[Assert\Length(max:100 , minMessage : "le contenu du commentaire ne doit pas etre tros long ")]
+    
+    #[Assert\Length(max:100 , maxMessage : "le contenu du commentaire ne doit pas etre tros long ")]
     #[Assert\Length(min:2 , minMessage : "le contenu du commentaire ne doit pas etre inferieur a 2 caracteres  ")]
 
 
     private ?string $descriptionCommentaire = null;
+    /**
+     * @ORM\Column(type="text")
+     * @AppAssert\BadWords
+     */
+    private $comment;
+
+    #[ORM\Column(length: 255)]
+    private ?string $nickname = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $email_c = null;
+
+  
+
+   
 
    
     public function getId(): ?int
@@ -81,4 +98,32 @@ class Commentaire
 
         return $this;
     }
+
+    public function getNickname(): ?string
+    {
+        return $this->nickname;
+    }
+
+    public function setNickname(string $nickname): self
+    {
+        $this->nickname = $nickname;
+
+        return $this;
+    }
+
+    public function getEmailC(): ?string
+    {
+        return $this->email_c;
+    }
+
+    public function setEmailC(string $email_c): self
+    {
+        $this->email_c = $email_c;
+
+        return $this;
+    }
+
+   
+
+    
 }

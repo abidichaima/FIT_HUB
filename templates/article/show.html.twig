@@ -1,33 +1,25 @@
 
 {% extends 'baseBack.html.twig' %}
 {% block title %}
-<title>Article</title>
-<style>
-.table td:nth-child(3) {
-        width: 200px;
-        max-width: 200px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-    }
-   .table td:nth-child(5) {
-        width: 200px;
-        max-width: 200px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-    }
-    </style>
+Article
+
 
 {% endblock %}
 
 
 {% block body %}
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+<a href="{{ path('app_article_index') }}"class="material-icons"> arrow_back_ios</a>
     <h1>Article</h1>
 
+
+
    <table class="table" align="center" >
+   
         <tbody>
             <tr>
+            
                 <th>Id</th>
                 <td>{{ article.id }}</td>
             </tr>
@@ -39,7 +31,7 @@
             <tr>
                 <th>DescriptionArticle</th>
                 <br>
-                <td >{{ article.descriptionArticle }}</td>
+                <td class="scrollable-cell">{{ article.descriptionArticle }}</td>
                  </br>            
             </tr>
 
@@ -53,17 +45,20 @@
             <tr>
                 <th>ImageArticle</th>
                 <td>
-<img class="img-fluid" src="public/uploads/articles{{ article.imageArticle  }}"  >
+<img class="img-fluid" src="{{asset('uploads/articles/' ~ article.imageArticle)  }}"  >
 </td>
 
                 
             </tr>
         </tbody>
+                       <a href="{{ path('app_article_edit', {'id': article.id}) }}"class="material-icons">edit</a>
+
     </table>
 
-    <a href="{{ path('app_article_index') }}"class="btn btn-primary">back to list</a>
+    
 
-    <a href="{{ path('app_article_edit', {'id': article.id}) }}"class="btn btn-primary">edit</a>
-
+ 
     {{ include('article/_delete_form.html.twig') }}
+   
 {% endblock %}
+

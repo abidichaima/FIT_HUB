@@ -18,6 +18,8 @@ class Categorie
 
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank(message : "le nom ne doit pas etre vide")]
+    #[Assert\Length(min:2,minMessage : "le nom ne doit pas etre inferieur a 5 caracteres")]
+    #[Assert\Length(max:100,maxMessage : "le nom ne doit pas etre trop long")]
 
     private ?string $nomCategorie = null;
 
@@ -27,8 +29,7 @@ class Categorie
 
     #[Assert\Length(min:2 , minMessage : "la description doit avoir au minimum 2 caracteres")]
     private ?string $descriptionCategory = null;
-
-    #[ORM\OneToMany(mappedBy: 'categorie', targetEntity: Article::class)]
+    #[ORM\OneToMany(mappedBy: 'categorie', targetEntity: Article::class,cascade: ["remove"])]
     private Collection $articles;
 
     public function __construct()

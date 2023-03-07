@@ -12,6 +12,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+
+
+
+
+
 #[Route('/article/{id}/commentaireu')]
 class CommentaireuController extends AbstractController
 {
@@ -26,6 +31,7 @@ class CommentaireuController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            
             $commentaireRepository->save($commentaire, true);
 
             return $this->redirectToRoute('app_articleu_show', [

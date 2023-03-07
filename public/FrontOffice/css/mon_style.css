@@ -17,6 +17,8 @@
     line-height: 1.7;
     color: #828282;
     background: #fff;
+    background-color: #DBF9FC;
+
   }
   
   #page {
@@ -181,4 +183,8 @@
     color: black;
   }
   
- 
+  .icon-facebook {
+    width: 10px;
+    height: 10px;
+  }
+  

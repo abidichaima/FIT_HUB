@@ -9,6 +9,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Knp\Component\Pager\PaginatorInterface;
+
 
 #[Route('/categorieu')]
 class CategorieuController extends AbstractController
@@ -23,13 +25,24 @@ class CategorieuController extends AbstractController
 
    
     #[Route('/{id}', name: 'app_categorieu_show', methods: ['GET'])]
-    public function show(Categorie $categorie): Response
+    public function show(Categorie $categorie,Request $request, PaginatorInterface $paginator): Response
     {   $articles = $categorie->getArticles();
+        $selectedCategoryId = $request->query->get('selected_category_id');
+
+        $articles = $paginator->paginate(
+            $articles , /* query NOT result */
+            $request->query->getInt(key:'page', default: 1)/*page number*/,
+            limit:2/*limit per page*/
+        );
         return $this->render('categorieu/show.html.twig', [
             'categorie' => $categorie,
             'articles'=>$articles,
+            'pagination' => $articles,
         ]);
+        
     }
+    
+  
 
     
 }
