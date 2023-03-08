@@ -51,6 +51,13 @@ class Article
 
     private ?string $descriptionArticle = null;
 
+    #[ORM\Column(nullable: true)]
+    
+    public ?int $like_article = 0;
+
+    #[ORM\Column(nullable: true)]
+    public ?int $dislike_article = 0;
+
     public function __construct()
     {
         $this->commentaires = new ArrayCollection();
@@ -117,6 +124,11 @@ class Article
     {
         return $this->commentaires;
     }
+    public function getCommentairesCount(): int
+    {
+        return $this->getCommentaires()->count();
+    }
+
 
     public function addCommentaire(Commentaire $commentaire): self
     {
@@ -152,6 +164,30 @@ class Article
     public function setDescriptionArticle(string $descriptionArticle): self
     {
         $this->descriptionArticle = $descriptionArticle;
+
+        return $this;
+    }
+
+    public function getLikeArticle(): ?int
+    {
+        return $this->like_article;
+    }
+
+    public function setLikeArticle(?int $like_article): self
+    {
+        $this->like_article = $like_article;
+
+        return $this;
+    }
+
+    public function getDislikeArticle(): ?int
+    {
+        return $this->dislike_article;
+    }
+
+    public function setDislikeArticle(?int $dislike_article): self
+    {
+        $this->dislike_article = $dislike_article;
 
         return $this;
     }

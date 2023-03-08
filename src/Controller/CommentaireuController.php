@@ -31,6 +31,8 @@ class CommentaireuController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $rr = $this->filterwords($commentaire->getDescriptionCommentaire());
+$commentaire->setDescriptionCommentaire($rr);
             
             $commentaireRepository->save($commentaire, true);
 
@@ -43,6 +45,28 @@ class CommentaireuController extends AbstractController
             'commentaire' => $commentaire,
             'form' => $form,
         ]);
+    }
+    public function filterwords($text)
+    {
+        $filterWords = array('fokaleya', 'bhim', 'msatek', 'fuck', 'slut', 'fucku');
+        $filterCount = count($filterWords);
+        $str = "";
+        $data = preg_split('/\s+/',  $text);
+        foreach($data as $s){
+            $g = false;
+            foreach ($filterWords as $lib) {
+                if($s == $lib){
+                    $t = "";
+                    for($i =0; $i<strlen($s); $i++) $t .= "*";
+                    $str .= $t . " ";
+                    $g = true;
+                    break;
+                }
+            }
+            if(!$g)
+            $str .= $s . " ";
+        }
+        return $str;
     }
 
 }

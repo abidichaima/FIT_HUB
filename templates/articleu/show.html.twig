@@ -1,6 +1,7 @@
 {% extends 'baseFront.html.twig' %}
 
 {% block title %}
+
     Article
 {% endblock %}
 
@@ -10,12 +11,13 @@
 {% endblock %}
 
 {% block body %}
+
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <a href="{{ path('app_categorieu_show', {'id': article.categorie.id}) }}"  class="material-icons">
+                <a href="{{ path('app_categorieu_show', {'id': articles.categorie.id}) }}"  class="material-icons">
 arrow_back_ios
 
                 </a>
@@ -24,22 +26,32 @@ arrow_back_ios
         <div class="row">
             <div class="col-lg-8">
                 <div class="card mb-3">
-                    <img src="{{ asset('uploads/articles/' ~ article.imageArticle) }}" class="card-img-top" alt="Article image">
+                    <img src="{{ asset('uploads/articles/' ~ articles.imageArticle) }}" class="card-img-top" alt="Article image">
                     <div class="card-body">
-                        <h1 class="card-title">{{ article.titreArticle }}</h1>
-                        <p class="card-text">{{ article.descriptionArticle }}</p>
-                        <p class="card-text"><small class="text-muted">{{ article.dateArticle ? article.dateArticle|date('Y-m-d') : '' }}</small></p>
+                        <h1 class="card-title">{{ articles.titreArticle }}</h1>
+                        <p class="card-text">{{ articles.descriptionArticle }}</p>
+                        <p class="card-text"><small class="text-muted">{{ articles.dateArticle ? articles.dateArticle|date('Y-m-d') : '' }}</small></p>
                         <div class="d-flex justify-content-between">
                             <div>
-                                <a href="https://www.facebook.com/sharer/sharer.php?u={{ absolute_url(path('app_articleu_show', {id: article.id})) }}" >
+                                <a href="https://www.facebook.com/sharer/sharer.php?u={{ absolute_url(path('app_articleu_show', {id: articles.id})) }}" >
                                   
                                     <span class="material-icons">
 share
 </span>
                                 </a>
                             </div>
+  
+
+                            <div class="article-actions">
+            <form method="POST" action="{{ path('app_articleu_like', {'id': articles.id}) }}">
+                <button type="submit" name="like" class="btn btn-success">J'aime ({{ articles.like_article }})</button>
+
+            </form>
+<form method="POST" action="{{ path('app_articleu_dislike', {'id': articles.id}) }}">
+        <button type="submit" name="dislike" class="btn btn-danger">Je n'aime pas ({{ articles.dislike_article }})</button></form>
+        </div>
                             <div>
-                                <a href="{{ path('app_commentaireu_new', {'id': article.id}) }}" >
+                                <a href="{{ path('app_commentaireu_new', {'id': articles.id}) }}" >
                                     <span class="material-icons">
 insert_comment
 </span>
@@ -48,7 +60,8 @@ insert_comment
                         </div>
                     </div>
                 </div>
-                <h2 class="mb-3">Commentaires</h2>
+                <h2 class="mb-3">Commentaires :({{ articles.CommentairesCount }})</h2>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
                 {% if comments|length > 0 %}
                     {% for comment in comments %}
                         <div class="card mb-3">
@@ -68,5 +81,7 @@ insert_comment
           
         </div>
     </div>
+
+
 {% endblock %}
 

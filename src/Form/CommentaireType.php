@@ -12,9 +12,16 @@ class CommentaireType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('dateCommentaire')
-            ->add('descriptionCommentaire')
-            ->add('article')
+            
+            
+           
+        ->add('email_c')
+        ->add('nickname')
+        ->add('descriptionCommentaire')
+        ->add('dateCommentaire')
+        ->add('article')
+        
+            
         ;
     }
 

@@ -27,14 +27,7 @@ class ArticleController extends AbstractController
         ]);
     }
 
-    #[Route('/list', name: 'app_article_list', methods: ['GET'])]
-    public function list(ArticleRepository $articleRepository): Response
-    {
-        return $this->render('article/list.html.twig', [
-            'articles' => $articleRepository->findAll(),
-        ]);
-    }
-
+  
 
 
 
@@ -107,4 +100,42 @@ class ArticleController extends AbstractController
 
         return $this->redirectToRoute('app_article_index', [], Response::HTTP_SEE_OTHER);
     }
+    #[Route('/article/{id}/like', name: 'app_article_like', methods: ['POST'])]
+public function likeArticle(Request $request, Article $article): Response
+{
+    $entityManager = $this->getDoctrine()->getManager();
+
+    $article->setLikeArticle($article->getLikeArticle() + 1);
+
+    $entityManager->persist($article);
+    $entityManager->flush();
+
+    return $this->redirectToRoute('app_article_show', ['id' => $article->getId()]);
+}
+
+
+    
+
+#[Route('/article/{id}/dislike', name: 'app_article_dislike', methods: ['POST'])]
+public function dislikeArticle(Request $request, Article $article): Response
+{
+    $entityManager = $this->getDoctrine()->getManager();
+
+    $article->setDislikeArticle($article->getDislikeArticle() + 1);
+
+    $entityManager->persist($article);
+    $entityManager->flush();
+
+    return $this->redirectToRoute('app_article_show', ['id' => $article->getId()]);
+}
+ /*** @Route("/articles", name="article_list")
+*/
+public function list(ArticleRepository $articleRepository): Response
+{
+   $articles = $articleRepository->findAll();
+
+   return $this->render('article/list.html.twig', [
+       'articles' => $articles,
+   ]);
+}
 }
