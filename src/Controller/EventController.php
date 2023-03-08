@@ -23,6 +23,8 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Knp\Component\Pager\PaginatorInterface;
+use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
+
 use Symfony\Component\Serializer\SerializerInterface;
 
 
@@ -31,32 +33,18 @@ class EventController extends AbstractController
 {
 
     #[Route('/allEvents', name: 'list')]
-    public function getEvents():JsonResponse
+    public function getEvents(SerializerInterface $serializer): JsonResponse
     {
         $events = $this->getDoctrine()->getRepository(Event::class)->findAll();
-        function formatDateTime($dateTime)
-        {
-            return $dateTime->format('Y-m-d H:i:s');
-        }
-
-        // Map the seances to an array of events in the required format
-        $events = array_map(function ($events) {
-            $tickets = $events->getTickets();
-            return [
-                'id' => $events->getId(),
-                'nomE' => $events->getNomEvent(),
-                'date' => formatDateTime($events->getDate()),
-                'type' => $events->getType(),
-                'description' => $events->getDescription(),
-                'image'=>$events->getImage(),
-
-                //'tickets' => $tickets ? $tickets->getEmail() . ' ' . $tickets->getNom() : '',
-            ];
-        }, $events);
-        return new JsonResponse($events);
-        
+    
+        $normalizedEvents = $serializer->normalize($events, null, [
+            AbstractNormalizer::CIRCULAR_REFERENCE_HANDLER => function ($object) {
+                return $object->getId();
+            }
+        ]);
+    
+        return new JsonResponse($normalizedEvents);
     }
-
     #[Route('/event/{id}', name: 'eventjson')]
     public function eventId($id, SerializerInterface $serializer, EventRepository $eventRepository): Response
     {
@@ -150,7 +138,7 @@ $events->setDate($date);
 
 
     
-    #[Route("/event", name:"app_event")]
+    #[Route("/user/event", name:"app_event")]
     public function eventsList(EventRepository $eventRepository, Request $request, PaginatorInterface $paginator): Response
     {
         $events = $eventRepository->findBy([], ['date' => 'DESC']);
@@ -169,7 +157,7 @@ $events->setDate($date);
 
    
     
-     #[Route("/event/{id}/details", name:"event_details")]
+     #[Route("/user/event/{id}/details", name:"event_details")]
     public function eventDetails(Event $event): Response
     {
         return $this->render('event/detail.html.twig', [
@@ -180,7 +168,7 @@ $events->setDate($date);
 
    
 
-    #[Route('eventadmin', name: 'app_event_admin')]
+    #[Route('admin/event', name: 'app_event_admin')]
     public function adminindex(EventRepository $eventRepository,Request $request,PaginatorInterface $paginator): Response
 
     {
@@ -198,7 +186,7 @@ $events->setDate($date);
    
     }
 
-    #[Route('eventadmin/new', name: 'app_event_admin_new')]
+    #[Route('admin/event/new', name: 'app_event_admin_new')]
     public function new(Request $request, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
     {
         $event = new Event();
@@ -242,7 +230,7 @@ $events->setDate($date);
         ]);
     }
 
-    #[Route('eventadmin/show/{id}', name: 'app_event_admin_show')]
+    #[Route('admin/event/show/{id}', name: 'app_event_admin_show')]
     public function show(Event $event): Response
     {
         return $this->render('eventadmin/show.html.twig', [
@@ -250,7 +238,7 @@ $events->setDate($date);
         ]);
     }
 
-    #[Route('eventadmin/edit/{id}', name: 'event_edit')]
+    #[Route('admin/event/edit/{id}', name: 'event_edit')]
     public function edit(Request $request, Event $event, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(EventType::class, $event);
@@ -268,7 +256,7 @@ $events->setDate($date);
         ]);
     }
 
-    #[Route('eventadmin/delete/{id}', name: 'event_delete')]
+    #[Route('admin/event/delete/{id}', name: 'event_delete')]
     public function delete(Request $request, Event $event, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$event->getId(), $request->request->get('_token'))) {

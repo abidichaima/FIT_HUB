@@ -108,28 +108,35 @@ class TicketController extends AbstractController
     }
     
 
-    #[Route('/addTicketJSON/new', name: 'addTicketJSON')]
-    public function addTicketJSON(Request $req,NormalizerInterface $normalizer): Response
-    {
-        $em= $this->getDoctrine()->getManager();
-        $Ticket = new Ticket();
-        $tickets->setNom($req->get('nom'));
-        $tickets->setEmail($req->get('email'));
-        $tickets->setDisponibilite($req->get('disponibilite'));
-        $tickets->setPrix($req->get('prix'));
-        $tickets->setNombreMax($req->get('nombreMax'));
-        //$dateStr = $req->get('bookingDate');
-       // $date = new \DateTime($dateStr);
-        //$tickets->setBookingDate($date);
-                
-        $em->persist($tickets);
-        $em->flush();
-        $jsonContent = $normalizer->normalize($tickets,'json',['groups'=>"tickets"]);
-        dd($jsonContent);
-
-        return new  Response (json_encode($jsonContent));       
+    #[Route('/addTicketJSON/new/{id}', name: 'addTicketJSON')]
+public function addTicketJSON(Request $req, NormalizerInterface $normalizer, $id): Response
+{
+    $em= $this->getDoctrine()->getManager();
     
+    // Find the event by ID
+    $event = $em->getRepository(Event::class)->find($id);
+    if (!$event) {
+        throw $this->createNotFoundException('Event not found');
     }
+    
+    // Create a new ticket and set its properties
+    $ticket = new Ticket();
+    $ticket->setNom($req->get('nom'));
+    $ticket->setEmail($req->get('email'));
+    $ticket->setDisponibilite($req->get('disponibilite'));
+    $ticket->setPrix($req->get('prix'));
+    $ticket->setNombreMax($req->get('nombreMax'));
+    
+    // Associate the ticket with the event
+    $event->addTicket($ticket);
+    $ticket->setEvent($event);
+
+    $em->persist($ticket);
+    $em->flush();
+    
+    $jsonContent = $normalizer->normalize($ticket, 'json', ['groups' => "tickets"]);
+    return new Response(json_encode($jsonContent));       
+}
 
     #[Route('/updateTicketJSON/{id}', name: 'updateTicketJSON')]
 
@@ -161,9 +168,22 @@ class TicketController extends AbstractController
        return new JsonResponse(['status' => 'success', 'message' => 'Ticket deleted.']);
    }
 
-    #[Route("/eventadmin/{id}/ticket/new", name:"event_ticket_new")]
+    #[Route("/admin/event/{id}/ticket/new", name:"event_ticket_new")]
     public function new(Request $request, EntityManagerInterface $entityManager, Event $event): Response
 {
+
+      // Check if a ticket with null nom and email values already exists
+      $existingTicket = $entityManager->getRepository(Ticket::class)->findOneBy([
+        'event' => $event,
+        'nom' => null,
+        'email' => null,
+    ]);
+
+    if ($existingTicket) {
+        $this->addFlash('error', 'Ticket already exists.');
+        return $this->redirectToRoute('admin_ticket_index', ['id' => $event->getId()]);
+    }
+    
     $ticket = new Ticket();
     $ticket->setEvent($event);
     $form = $this->createForm(AdminTicketType::class, $ticket);
@@ -185,7 +205,7 @@ class TicketController extends AbstractController
         'form' => $form->createView(),
     ]);
 }
-    #[Route("/ticketadmin", name:"admin_ticket_index")]
+    #[Route("admin/ticket", name:"admin_ticket_index")]
    public function index(TicketRepository $ticketRepository): Response
    {
        $tickets = $ticketRepository->findAll();
@@ -194,7 +214,7 @@ class TicketController extends AbstractController
            'tickets' => $tickets,
        ]);
    }
-   #[Route('ticketadmin/delete/{id}', name: 'ticket_delete')]
+   #[Route('admin/ticket/delete/{id}', name: 'ticket_delete')]
    public function delete(Request $request, Ticket $ticket, EntityManagerInterface $entityManager): Response
    {
        if ($this->isCsrfTokenValid('delete'.$ticket->getId(), $request->request->get('_token'))) {
@@ -205,17 +225,20 @@ class TicketController extends AbstractController
        return $this->redirectToRoute('admin_ticket_index');
    }
 
-   #[Route('/event/{id}/book', name: 'event_book')]
+   #[Route('user/event/{id}/book', name: 'event_book')]
    public function book(Request $request, $id, TicketRepository $ticketRepository,MailerInterface $mailer, TokenGeneratorInterface $tokenGenerator): Response
    {
 
        $event = $this->getDoctrine()
            ->getRepository(Event::class)
            ->find($id);
-          
+         /*  $utilisateur = $this->getDoctrine()
+           ->getRepository(Utilisateur::class)
+           ->find($id);*/
            
            $ticket = new Ticket();
            $ticket->setEvent($event);
+        //   $ticket->setUtilisateur($utilisateur);
            
            
            $bookingDate = new \DateTime();
@@ -280,12 +303,12 @@ if ($ticketCount >= $ticket->getNombreMax()) {
             $pdf->Rect(10, 10, 190, 265, 'D');
 
             $pdf->Image($pathqr."/logo2.jpg", 15, 15, 50, 0,);
-            $pdf->SetXY(50, 50);
+            $pdf->SetXY(60, 50);
 
 
-            $pdf->WriteHTML('<h1 style="color: #0099ff; font-size: 20px;">We hope your ticket finds you well</h1>');
+            $pdf->WriteHTML('<h1 style="color: #152238; font-size: 20px;">We hope your ticket finds you well</h1>');
             $pdf->SetMargins(15, 15, 15);
-            $pdf->SetFillColor(153, 255, 255); // light gray
+            $pdf->SetFillColor(153, 255, 255);
             $pdf->SetFont('Helvetica', 'B', 20);
             
             $pdf->SetMargins(25, 25, 25); // Left, top, and right margins
@@ -332,7 +355,7 @@ if ($ticketCount >= $ticket->getNombreMax()) {
         ]);
    }
 
-    #[Route("ticketadmin/{id}/edit", name:"admin_ticket_edit")]
+    #[Route("admin/ticket/{id}/edit", name:"admin_ticket_edit")]
     public function edit(Request $request, Ticket $ticket): Response
     {
         $form = $this->createForm(AdminTicketType::class, $ticket);

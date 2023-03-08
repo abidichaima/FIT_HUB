@@ -106,7 +106,7 @@ class Ticket
 
         return $this;
     }
-/*
+
     public function getUtilisateurs(): ?Utilisateur
     {
         return $this->utilisateurs;
@@ -123,7 +123,7 @@ class Ticket
     {
         return $this->utilisateur;
     }
-*/
+
     public function getNom(): ?string
     {
         return $this->nom;

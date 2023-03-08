@@ -26,7 +26,7 @@
                 <tr>
 
                     <td>{{ ticket.id }}</td>
-                                                        <td>{{ ticket.event.getId() }}</td>
+<td>{{ ticket.event is not null ? ticket.event.getId() : 'N/A' }}</td>
 
                                         <td>{{ ticket.prix }}</td>
 
