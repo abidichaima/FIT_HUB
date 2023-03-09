@@ -68,10 +68,12 @@ class __TwigTemplate_7e45ee75c4b93f8dc968bc0083d84497 extends Template
         echo "    <div class=\"col-lg-12 grid-margin stretch-card\">
         <div class=\"card\">
             <div class=\"card-body\">
-                <br>
-                 <h4 class=\"card-title\">Ajouter utilisateur :</h4>
+                
+                
+                                <h4 class=\"card-title\"><svg width=\"50\" height=\"50\" stroke-width=\"1.5\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" style=\"margin-left:550px; margin-bottom:30px ;margin-top:0;width:50px; color:black\"> <path d=\"M17 10H20M23 10H20M20 10V7M20 10V13\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/> <path d=\"M1 20V19C1 15.134 4.13401 12 8 12V12C11.866 12 15 15.134 15 19V20\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/> <path d=\"M8 12C10.2091 12 12 10.2091 12 8C12 5.79086 10.2091 4 8 4C5.79086 4 4 5.79086 4 8C4 10.2091 5.79086 12 8 12Z\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/> </svg>
+
                 ";
-        // line 9
+        // line 11
         echo twig_include($this->env, $context, "utilisateur/_form.html.twig");
         echo "
             </div>
@@ -98,7 +100,7 @@ class __TwigTemplate_7e45ee75c4b93f8dc968bc0083d84497 extends Template
 
     public function getDebugInfo()
     {
-        return array (  75 => 9,  68 => 4,  58 => 3,  35 => 1,);
+        return array (  77 => 11,  68 => 4,  58 => 3,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -109,12 +111,14 @@ class __TwigTemplate_7e45ee75c4b93f8dc968bc0083d84497 extends Template
     <div class=\"col-lg-12 grid-margin stretch-card\">
         <div class=\"card\">
             <div class=\"card-body\">
-                <br>
-                 <h4 class=\"card-title\">Ajouter utilisateur :</h4>
+                
+                
+                                <h4 class=\"card-title\"><svg width=\"50\" height=\"50\" stroke-width=\"1.5\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" style=\"margin-left:550px; margin-bottom:30px ;margin-top:0;width:50px; color:black\"> <path d=\"M17 10H20M23 10H20M20 10V7M20 10V13\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/> <path d=\"M1 20V19C1 15.134 4.13401 12 8 12V12C11.866 12 15 15.134 15 19V20\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/> <path d=\"M8 12C10.2091 12 12 10.2091 12 8C12 5.79086 10.2091 4 8 4C5.79086 4 4 5.79086 4 8C4 10.2091 5.79086 12 8 12Z\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/> </svg>
+
                 {{ include('utilisateur/_form.html.twig') }}
             </div>
         </div>
     </div>
-{% endblock %}", "utilisateur/new.html.twig", "C:\\Users\\user\\Desktop\\FitHub\\templates\\utilisateur\\new.html.twig");
+{% endblock %}", "utilisateur/new.html.twig", "C:\\Users\\user\\Desktop\\gestion user\\templates\\utilisateur\\new.html.twig");
     }
 }

@@ -307,7 +307,7 @@ class __TwigTemplate_9c4d2a696d02a9df937d8d3ff270742f extends Template
                  <a href=\"";
         // line 115
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_utilisateur_index");
-        echo "\" >back to list</a>   
+        echo "\" ><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"50\" height=\"30\" style=\"color:black\" fill=\"currentColor\" class=\"bi bi-arrow-left-right\" viewBox=\"0 0 16 16\"> <path fill-rule=\"evenodd\" d=\"M1 11.5a.5.5 0 0 0 .5.5h11.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 11H1.5a.5.5 0 0 0-.5.5zm14-7a.5.5 0 0 1-.5.5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H14.5a.5.5 0 0 1 .5.5z\"/> </svg>
 \t\t\t\t\t
         </div>
         
@@ -459,7 +459,7 @@ class __TwigTemplate_9c4d2a696d02a9df937d8d3ff270742f extends Template
        <button class=\"btn btn-primary\" style=\" border:none\">{{button_label|default('Save')}}</button> 
        <div align=\"right\">
 \t\t\t\t
-                 <a href=\"{{ path('app_utilisateur_index') }}\" >back to list</a>   
+                 <a href=\"{{ path('app_utilisateur_index') }}\" ><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"50\" height=\"30\" style=\"color:black\" fill=\"currentColor\" class=\"bi bi-arrow-left-right\" viewBox=\"0 0 16 16\"> <path fill-rule=\"evenodd\" d=\"M1 11.5a.5.5 0 0 0 .5.5h11.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 11H1.5a.5.5 0 0 0-.5.5zm14-7a.5.5 0 0 1-.5.5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H14.5a.5.5 0 0 1 .5.5z\"/> </svg>
 \t\t\t\t\t
         </div>
         
@@ -473,6 +473,6 @@ class __TwigTemplate_9c4d2a696d02a9df937d8d3ff270742f extends Template
 
 
 
-{% endblock %}", "utilisateur/_form.html.twig", "C:\\Users\\user\\Desktop\\FitHub\\templates\\utilisateur\\_form.html.twig");
+{% endblock %}", "utilisateur/_form.html.twig", "C:\\Users\\user\\Desktop\\gestion user\\templates\\utilisateur\\_form.html.twig");
     }
 }

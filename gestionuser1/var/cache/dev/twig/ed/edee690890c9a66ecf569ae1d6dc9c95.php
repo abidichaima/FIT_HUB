@@ -119,6 +119,6 @@ class __TwigTemplate_6093695b3b3340aebfef00d5e757b34f extends Template
 {% block body %}
 
 {% endblock %}
-", "front/homePage.html.twig", "C:\\Users\\user\\Desktop\\FitHub\\templates\\front\\homePage.html.twig");
+", "front/homePage.html.twig", "C:\\Users\\user\\Desktop\\gestion user\\templates\\front\\homePage.html.twig");
     }
 }

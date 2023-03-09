@@ -69,7 +69,7 @@ class __TwigTemplate_25ba4361a4333097da05b425a283a621 extends Template
         <div class=\"card\">
             <div class=\"card-body\">
                 <br>
-                <h4 class=\"card-title\">Modifier utilisateur :</h4>
+                <h4 class=\"card-title\"><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"70\" height=\"50\" style=\"margin-left:500px;\"> <g> <path fill=\"none\" d=\"M0 0h24v24H0z\"/> <path d=\"M21 6.757l-2 2V4h-9v5H5v11h14v-2.757l2-2v5.765a.993.993 0 0 1-.993.992H3.993A1 1 0 0 1 3 20.993V8l6.003-6h10.995C20.55 2 21 2.455 21 2.992v3.765zm.778 2.05l1.414 1.415L15.414 18l-1.416-.002.002-1.412 7.778-7.778z\"/> </g> </svg></h4>
                 <center>
                 <tr>
                  <td>
@@ -77,10 +77,9 @@ class __TwigTemplate_25ba4361a4333097da05b425a283a621 extends Template
         // line 12
         echo twig_include($this->env, $context, "utilisateur/_form.html.twig", ["button_label" => "Update"]);
         echo "
-                </td>
                 <td>
                 ";
-        // line 15
+        // line 14
         echo twig_include($this->env, $context, "utilisateur/_delete_form.html.twig");
         echo "
                 </td>
@@ -110,7 +109,7 @@ class __TwigTemplate_25ba4361a4333097da05b425a283a621 extends Template
 
     public function getDebugInfo()
     {
-        return array (  84 => 15,  78 => 12,  68 => 4,  58 => 3,  35 => 1,);
+        return array (  83 => 14,  78 => 12,  68 => 4,  58 => 3,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -122,12 +121,11 @@ class __TwigTemplate_25ba4361a4333097da05b425a283a621 extends Template
         <div class=\"card\">
             <div class=\"card-body\">
                 <br>
-                <h4 class=\"card-title\">Modifier utilisateur :</h4>
+                <h4 class=\"card-title\"><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"70\" height=\"50\" style=\"margin-left:500px;\"> <g> <path fill=\"none\" d=\"M0 0h24v24H0z\"/> <path d=\"M21 6.757l-2 2V4h-9v5H5v11h14v-2.757l2-2v5.765a.993.993 0 0 1-.993.992H3.993A1 1 0 0 1 3 20.993V8l6.003-6h10.995C20.55 2 21 2.455 21 2.992v3.765zm.778 2.05l1.414 1.415L15.414 18l-1.416-.002.002-1.412 7.778-7.778z\"/> </g> </svg></h4>
                 <center>
                 <tr>
                  <td>
                  {{ include('utilisateur/_form.html.twig', {'button_label': 'Update'}) }}
-                </td>
                 <td>
                 {{ include('utilisateur/_delete_form.html.twig') }}
                 </td>
@@ -136,6 +134,6 @@ class __TwigTemplate_25ba4361a4333097da05b425a283a621 extends Template
                 </div>
                </div>
     </div>
-{% endblock %}", "utilisateur/edit.html.twig", "C:\\Users\\user\\Desktop\\FitHub\\templates\\utilisateur\\edit.html.twig");
+{% endblock %}", "utilisateur/edit.html.twig", "C:\\Users\\user\\Desktop\\gestion user\\templates\\utilisateur\\edit.html.twig");
     }
 }

@@ -69,14 +69,7 @@ class __TwigTemplate_9ae5cc32b60f6751b623b2ef8a2db992 extends Template
     <!-- partial:partials/_navbar.html -->
     <nav class=\"navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row\">
       <div class=\"text-center navbar-brand-wrapper d-flex align-items-center justify-content-center\">
-        <a class=\"navbar-brand brand-logo mr-5\" href=\"\"><img src=\"";
-        // line 32
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("./BackOffice/images/logo.svg"), "html", null, true);
-        echo "\" class=\"mr-2\" alt=\"logo\"/></a>
-        <a class=\"navbar-brand brand-logo-mini\" href=\"\"><img src=\"";
-        // line 33
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("./BackOffice/images/logo-mini.svg"), "html", null, true);
-        echo "\" alt=\"logo\"/></a>
+       
       </div>
       <div class=\"navbar-menu-wrapper d-flex align-items-center justify-content-end\">
         <button class=\"navbar-toggler navbar-toggler align-self-center\" type=\"button\" data-toggle=\"minimize\">
@@ -146,7 +139,7 @@ class __TwigTemplate_9ae5cc32b60f6751b623b2ef8a2db992 extends Template
           <li class=\"nav-item nav-profile dropdown\">
             <a class=\"nav-link dropdown-toggle\" href=\"#\" data-toggle=\"dropdown\" id=\"profileDropdown\">
               <img src=\"";
-        // line 102
+        // line 101
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("./BackOffice/images/faces/face28.jpg"), "html", null, true);
         echo "\" alt=\"profile\"/>
             </a>
@@ -158,7 +151,7 @@ class __TwigTemplate_9ae5cc32b60f6751b623b2ef8a2db992 extends Template
               <a class=\"dropdown-item\">
       
                 <i class=\"ti-power-off text-primary\"href=\"";
-        // line 111
+        // line 110
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_back");
         echo "\"></i>
                 Logout
@@ -293,7 +286,7 @@ class __TwigTemplate_9ae5cc32b60f6751b623b2ef8a2db992 extends Template
             <ul class=\"chat-list\">
               <li class=\"list active\">
                 <div class=\"profile\"><img src=\"";
-        // line 243
+        // line 242
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("./BackOffice/images/faces/face1.jpg"), "html", null, true);
         echo "\" alt=\"image\"><span class=\"online\"></span></div>
                 <div class=\"info\">
@@ -304,7 +297,7 @@ class __TwigTemplate_9ae5cc32b60f6751b623b2ef8a2db992 extends Template
               </li>
               <li class=\"list\">
                 <div class=\"profile\"><img src=\"";
-        // line 251
+        // line 250
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("./BackOffice/images/faces/face2.jpg"), "html", null, true);
         echo "\" alt=\"image\"><span class=\"offline\"></span></div>
                 <div class=\"info\">
@@ -318,7 +311,7 @@ class __TwigTemplate_9ae5cc32b60f6751b623b2ef8a2db992 extends Template
               </li>
               <li class=\"list\">
                 <div class=\"profile\"><img src=\"";
-        // line 262
+        // line 261
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("./BackOffice/images/faces/face3.jpg"), "html", null, true);
         echo "\" alt=\"image\"><span class=\"online\"></span></div>
                 <div class=\"info\">
@@ -329,7 +322,7 @@ class __TwigTemplate_9ae5cc32b60f6751b623b2ef8a2db992 extends Template
               </li>
               <li class=\"list\">
                 <div class=\"profile\"><img src=\"";
-        // line 270
+        // line 269
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("./BackOffice/images/faces/face4.jpg"), "html", null, true);
         echo "\" alt=\"image\"><span class=\"offline\"></span></div>
                 <div class=\"info\">
@@ -340,7 +333,7 @@ class __TwigTemplate_9ae5cc32b60f6751b623b2ef8a2db992 extends Template
               </li>
               <li class=\"list\">
                 <div class=\"profile\"><img src=\"";
-        // line 278
+        // line 277
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("./BackOffice/images/faces/face5.jpg"), "html", null, true);
         echo "\" alt=\"image\"><span class=\"online\"></span></div>
                 <div class=\"info\">
@@ -351,7 +344,7 @@ class __TwigTemplate_9ae5cc32b60f6751b623b2ef8a2db992 extends Template
               </li>
               <li class=\"list\">
                 <div class=\"profile\"><img src=\"";
-        // line 286
+        // line 285
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("./BackOffice/images/faces/face11.jpg"), "html", null, true);
         echo "\" alt=\"image\"><span class=\"online\"></span></div>
                 <div class=\"info\">
@@ -386,6 +379,7 @@ class __TwigTemplate_9ae5cc32b60f6751b623b2ef8a2db992 extends Template
             </a>
             <div class=\"collapse\" id=\"ui-basic\">
               <ul class=\"nav flex-column sub-menu\">
+                
                 <li class=\"nav-item\"> <a class=\"nav-link\" href=\"";
         // line 319
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_utilisateur_new");
@@ -696,7 +690,7 @@ class __TwigTemplate_9ae5cc32b60f6751b623b2ef8a2db992 extends Template
 
     public function getDebugInfo()
     {
-        return array (  669 => 417,  656 => 21,  650 => 18,  646 => 17,  642 => 16,  636 => 13,  632 => 12,  627 => 11,  617 => 10,  598 => 8,  581 => 467,  577 => 466,  571 => 463,  567 => 462,  563 => 461,  559 => 460,  555 => 459,  548 => 455,  544 => 454,  540 => 453,  536 => 452,  530 => 449,  497 => 418,  495 => 417,  395 => 320,  391 => 319,  355 => 286,  344 => 278,  333 => 270,  322 => 262,  308 => 251,  297 => 243,  162 => 111,  150 => 102,  78 => 33,  74 => 32,  62 => 24,  60 => 10,  55 => 8,  46 => 1,);
+        return array (  663 => 417,  650 => 21,  644 => 18,  640 => 17,  636 => 16,  630 => 13,  626 => 12,  621 => 11,  611 => 10,  592 => 8,  575 => 467,  571 => 466,  565 => 463,  561 => 462,  557 => 461,  553 => 460,  549 => 459,  542 => 455,  538 => 454,  534 => 453,  530 => 452,  524 => 449,  491 => 418,  489 => 417,  389 => 320,  385 => 319,  348 => 285,  337 => 277,  326 => 269,  315 => 261,  301 => 250,  290 => 242,  155 => 110,  143 => 101,  62 => 24,  60 => 10,  55 => 8,  46 => 1,);
     }
 
     public function getSourceContext()
@@ -732,8 +726,7 @@ class __TwigTemplate_9ae5cc32b60f6751b623b2ef8a2db992 extends Template
     <!-- partial:partials/_navbar.html -->
     <nav class=\"navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row\">
       <div class=\"text-center navbar-brand-wrapper d-flex align-items-center justify-content-center\">
-        <a class=\"navbar-brand brand-logo mr-5\" href=\"\"><img src=\"{{asset('./BackOffice/images/logo.svg')}}\" class=\"mr-2\" alt=\"logo\"/></a>
-        <a class=\"navbar-brand brand-logo-mini\" href=\"\"><img src=\"{{asset('./BackOffice/images/logo-mini.svg')}}\" alt=\"logo\"/></a>
+       
       </div>
       <div class=\"navbar-menu-wrapper d-flex align-items-center justify-content-end\">
         <button class=\"navbar-toggler navbar-toggler align-self-center\" type=\"button\" data-toggle=\"minimize\">
@@ -1019,6 +1012,7 @@ class __TwigTemplate_9ae5cc32b60f6751b623b2ef8a2db992 extends Template
             </a>
             <div class=\"collapse\" id=\"ui-basic\">
               <ul class=\"nav flex-column sub-menu\">
+                
                 <li class=\"nav-item\"> <a class=\"nav-link\" href=\"{{ path('app_utilisateur_new') }}\">Ajouter Utilisateur</a></li>
                 <li class=\"nav-item\"> <a class=\"nav-link\" href=\"{{ path('app_utilisateur_index') }}\">Afficher Utilisateur</a></li>
                 
@@ -1173,6 +1167,6 @@ class __TwigTemplate_9ae5cc32b60f6751b623b2ef8a2db992 extends Template
 
 </html>
 
-", "baseBack.html.twig", "C:\\Users\\user\\Desktop\\FitHub\\templates\\baseBack.html.twig");
+", "baseBack.html.twig", "C:\\Users\\user\\Desktop\\gestion user\\templates\\baseBack.html.twig");
     }
 }

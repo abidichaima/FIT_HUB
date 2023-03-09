@@ -62,6 +62,10 @@ return [[
 '[C]Symfony%5CBundle%5CFrameworkBundle%5CController%5CAbstractController%23addLink' => 1,
 'Symfony%5CBundle%5CFrameworkBundle%5CController%5CAbstractController%24container' => 0,
 '[C]Symfony%5CBundle%5CFrameworkBundle%5CController%5CAbstractController%24container' => 1,
+'App%5CController%5CApiController' => 0,
+'[C]App%5CController%5CApiController' => 1,
+'App%5CController%5CApiController%23index' => 0,
+'[C]App%5CController%5CApiController%23index' => 1,
 'App%5CController%5CBackController' => 0,
 '[C]App%5CController%5CBackController' => 1,
 'App%5CController%5CBackController%23showBack' => 0,
@@ -70,22 +74,104 @@ return [[
 '[C]App%5CController%5CFrontController' => 1,
 'App%5CController%5CFrontController%23showFront' => 0,
 '[C]App%5CController%5CFrontController%23showFront' => 1,
+'App%5CController%5CMailerController' => 0,
+'[C]App%5CController%5CMailerController' => 1,
+'App%5CController%5CMailerController%23sendEmail' => 0,
+'[C]App%5CController%5CMailerController%23sendEmail' => 1,
+'App%5CController%5CMobile%5CUtilisateurMobileController' => 2,
+'[C]App%5CController%5CMobile%5CUtilisateurMobileController' => 1,
+'App%5CController%5CMobile%5CUtilisateurMobileController%23index' => 3,
+'[C]App%5CController%5CMobile%5CUtilisateurMobileController%23index' => 1,
+'App%5CController%5CMobile%5CUtilisateurMobileController%23add' => 4,
+'[C]App%5CController%5CMobile%5CUtilisateurMobileController%23add' => 1,
+'App%5CController%5CMobile%5CUtilisateurMobileController%23edit' => 5,
+'[C]App%5CController%5CMobile%5CUtilisateurMobileController%23edit' => 1,
+'App%5CController%5CMobile%5CUtilisateurMobileController%23manage' => 0,
+'[C]App%5CController%5CMobile%5CUtilisateurMobileController%23manage' => 1,
+'App%5CController%5CMobile%5CUtilisateurMobileController%23delete' => 6,
+'[C]App%5CController%5CMobile%5CUtilisateurMobileController%23delete' => 1,
+'App%5CController%5CMobile%5CUtilisateurMobileController%23deleteAll' => 7,
+'[C]App%5CController%5CMobile%5CUtilisateurMobileController%23deleteAll' => 1,
+'App%5CController%5CProfileController' => 0,
+'[C]App%5CController%5CProfileController' => 1,
+'App%5CController%5CProfileController%23show' => 0,
+'[C]App%5CController%5CProfileController%23show' => 1,
+'App%5CController%5CProfileController%23edit' => 0,
+'[C]App%5CController%5CProfileController%23edit' => 1,
+'App%5CController%5CRegistrationController' => 0,
+'[C]App%5CController%5CRegistrationController' => 1,
+'App%5CController%5CRegistrationController%23__construct' => 0,
+'[C]App%5CController%5CRegistrationController%23__construct' => 1,
+'App%5CController%5CRegistrationController%23register' => 0,
+'[C]App%5CController%5CRegistrationController%23register' => 1,
+'App%5CController%5CRegistrationController%23verifyUserEmail' => 0,
+'[C]App%5CController%5CRegistrationController%23verifyUserEmail' => 1,
+'App%5CController%5CRegistrationController%24emailVerifier' => 0,
+'[C]App%5CController%5CRegistrationController%24emailVerifier' => 1,
+'App%5CController%5CResetPasswordController' => 0,
+'[C]App%5CController%5CResetPasswordController' => 1,
+'App%5CController%5CResetPasswordController%23__construct' => 0,
+'[C]App%5CController%5CResetPasswordController%23__construct' => 1,
+'App%5CController%5CResetPasswordController%23request' => 0,
+'[C]App%5CController%5CResetPasswordController%23request' => 1,
+'App%5CController%5CResetPasswordController%23checkEmail' => 0,
+'[C]App%5CController%5CResetPasswordController%23checkEmail' => 1,
+'App%5CController%5CResetPasswordController%23reset' => 0,
+'[C]App%5CController%5CResetPasswordController%23reset' => 1,
+'App%5CController%5CResetPasswordController%23processSendingPasswordResetEmail' => 0,
+'[C]App%5CController%5CResetPasswordController%23processSendingPasswordResetEmail' => 1,
+'App%5CController%5CResetPasswordController%23setCanCheckEmailInSession' => 0,
+'[C]App%5CController%5CResetPasswordController%23setCanCheckEmailInSession' => 1,
+'App%5CController%5CResetPasswordController%23canCheckEmail' => 0,
+'[C]App%5CController%5CResetPasswordController%23canCheckEmail' => 1,
+'App%5CController%5CResetPasswordController%23storeTokenInSession' => 0,
+'[C]App%5CController%5CResetPasswordController%23storeTokenInSession' => 1,
+'App%5CController%5CResetPasswordController%23getTokenFromSession' => 0,
+'[C]App%5CController%5CResetPasswordController%23getTokenFromSession' => 1,
+'App%5CController%5CResetPasswordController%23setTokenObjectInSession' => 0,
+'[C]App%5CController%5CResetPasswordController%23setTokenObjectInSession' => 1,
+'App%5CController%5CResetPasswordController%23getTokenObjectFromSession' => 0,
+'[C]App%5CController%5CResetPasswordController%23getTokenObjectFromSession' => 1,
+'App%5CController%5CResetPasswordController%23cleanSessionAfterReset' => 0,
+'[C]App%5CController%5CResetPasswordController%23cleanSessionAfterReset' => 1,
+'App%5CController%5CResetPasswordController%23getSessionService' => 0,
+'[C]App%5CController%5CResetPasswordController%23getSessionService' => 1,
+'App%5CController%5CResetPasswordController%24resetPasswordHelper' => 0,
+'[C]App%5CController%5CResetPasswordController%24resetPasswordHelper' => 1,
+'App%5CController%5CResetPasswordController%24entityManager' => 0,
+'[C]App%5CController%5CResetPasswordController%24entityManager' => 1,
+'App%5CController%5CSecurityController' => 0,
+'[C]App%5CController%5CSecurityController' => 1,
+'App%5CController%5CSecurityController%23login' => 0,
+'[C]App%5CController%5CSecurityController%23login' => 1,
+'App%5CController%5CSecurityController%23logout' => 0,
+'[C]App%5CController%5CSecurityController%23logout' => 1,
+'App%5CController%5CUtilisateurApiController' => 0,
+'[C]App%5CController%5CUtilisateurApiController' => 1,
+'App%5CController%5CUtilisateurApiController%23signupAction' => 0,
+'[C]App%5CController%5CUtilisateurApiController%23signupAction' => 1,
+'App%5CController%5CUtilisateurApiController%23signinAction' => 0,
+'[C]App%5CController%5CUtilisateurApiController%23signinAction' => 1,
+'App%5CController%5CUtilisateurApiController%23editprofile' => 0,
+'[C]App%5CController%5CUtilisateurApiController%23editprofile' => 1,
 'App%5CController%5CUtilisateurController' => 0,
 '[C]App%5CController%5CUtilisateurController' => 1,
-'App%5CController%5CUtilisateurController%23login' => 0,
-'[C]App%5CController%5CUtilisateurController%23login' => 1,
+'App%5CController%5CUtilisateurController%23acceuil' => 0,
+'[C]App%5CController%5CUtilisateurController%23acceuil' => 1,
 'App%5CController%5CUtilisateurController%23new' => 0,
 '[C]App%5CController%5CUtilisateurController%23new' => 1,
 'App%5CController%5CUtilisateurController%23index' => 0,
 '[C]App%5CController%5CUtilisateurController%23index' => 1,
-'App%5CController%5CUtilisateurController%23add' => 0,
-'[C]App%5CController%5CUtilisateurController%23add' => 1,
 'App%5CController%5CUtilisateurController%23show' => 0,
 '[C]App%5CController%5CUtilisateurController%23show' => 1,
 'App%5CController%5CUtilisateurController%23edit' => 0,
 '[C]App%5CController%5CUtilisateurController%23edit' => 1,
 'App%5CController%5CUtilisateurController%23delete' => 0,
 '[C]App%5CController%5CUtilisateurController%23delete' => 1,
+'App%5CController%5CUtilisateurController%23blockUser' => 0,
+'[C]App%5CController%5CUtilisateurController%23blockUser' => 1,
+'App%5CController%5CUtilisateurController%23unblockUser' => 0,
+'[C]App%5CController%5CUtilisateurController%23unblockUser' => 1,
 'App%5CEntity%5CAbonnement' => 0,
 '[C]App%5CEntity%5CAbonnement' => 1,
 'App%5CEntity%5CAbonnement%23getId' => 0,
@@ -410,6 +496,36 @@ return [[
 '[C]App%5CEntity%5CParticipationSeance%24dateParticipation' => 1,
 'App%5CEntity%5CParticipationSeance%24seance' => 0,
 '[C]App%5CEntity%5CParticipationSeance%24seance' => 1,
+'App%5CEntity%5CResetPasswordRequest' => 0,
+'[C]App%5CEntity%5CResetPasswordRequest' => 1,
+'App%5CEntity%5CResetPasswordRequest%23__construct' => 0,
+'[C]App%5CEntity%5CResetPasswordRequest%23__construct' => 1,
+'App%5CEntity%5CResetPasswordRequest%23getId' => 0,
+'[C]App%5CEntity%5CResetPasswordRequest%23getId' => 1,
+'App%5CEntity%5CResetPasswordRequest%23getUser' => 0,
+'[C]App%5CEntity%5CResetPasswordRequest%23getUser' => 1,
+'App%5CEntity%5CResetPasswordRequest%23initialize' => 0,
+'[C]App%5CEntity%5CResetPasswordRequest%23initialize' => 1,
+'App%5CEntity%5CResetPasswordRequest%23getRequestedAt' => 0,
+'[C]App%5CEntity%5CResetPasswordRequest%23getRequestedAt' => 1,
+'App%5CEntity%5CResetPasswordRequest%23isExpired' => 0,
+'[C]App%5CEntity%5CResetPasswordRequest%23isExpired' => 1,
+'App%5CEntity%5CResetPasswordRequest%23getExpiresAt' => 0,
+'[C]App%5CEntity%5CResetPasswordRequest%23getExpiresAt' => 1,
+'App%5CEntity%5CResetPasswordRequest%23getHashedToken' => 0,
+'[C]App%5CEntity%5CResetPasswordRequest%23getHashedToken' => 1,
+'App%5CEntity%5CResetPasswordRequest%24id' => 0,
+'[C]App%5CEntity%5CResetPasswordRequest%24id' => 1,
+'App%5CEntity%5CResetPasswordRequest%24user' => 0,
+'[C]App%5CEntity%5CResetPasswordRequest%24user' => 1,
+'App%5CEntity%5CResetPasswordRequest%24selector' => 8,
+'[C]App%5CEntity%5CResetPasswordRequest%24selector' => 1,
+'App%5CEntity%5CResetPasswordRequest%24hashedToken' => 9,
+'[C]App%5CEntity%5CResetPasswordRequest%24hashedToken' => 1,
+'App%5CEntity%5CResetPasswordRequest%24requestedAt' => 10,
+'[C]App%5CEntity%5CResetPasswordRequest%24requestedAt' => 1,
+'App%5CEntity%5CResetPasswordRequest%24expiresAt' => 10,
+'[C]App%5CEntity%5CResetPasswordRequest%24expiresAt' => 1,
 'App%5CEntity%5CSeance' => 0,
 '[C]App%5CEntity%5CSeance' => 1,
 'App%5CEntity%5CSeance%23__construct' => 0,
@@ -552,6 +668,18 @@ return [[
 '[C]App%5CEntity%5CUtilisateur%23getSpecialite' => 1,
 'App%5CEntity%5CUtilisateur%23setSpecialite' => 0,
 '[C]App%5CEntity%5CUtilisateur%23setSpecialite' => 1,
+'App%5CEntity%5CUtilisateur%23isIsBlocked' => 0,
+'[C]App%5CEntity%5CUtilisateur%23isIsBlocked' => 1,
+'App%5CEntity%5CUtilisateur%23setIsBlocked' => 0,
+'[C]App%5CEntity%5CUtilisateur%23setIsBlocked' => 1,
+'App%5CEntity%5CUtilisateur%23isIsVerified' => 0,
+'[C]App%5CEntity%5CUtilisateur%23isIsVerified' => 1,
+'App%5CEntity%5CUtilisateur%23setIsVerified' => 0,
+'[C]App%5CEntity%5CUtilisateur%23setIsVerified' => 1,
+'App%5CEntity%5CUtilisateur%23jsonSerialize' => 0,
+'[C]App%5CEntity%5CUtilisateur%23jsonSerialize' => 1,
+'App%5CEntity%5CUtilisateur%23constructor' => 0,
+'[C]App%5CEntity%5CUtilisateur%23constructor' => 1,
 'App%5CEntity%5CUtilisateur%24id' => 0,
 '[C]App%5CEntity%5CUtilisateur%24id' => 1,
 'App%5CEntity%5CUtilisateur%24email' => 0,
@@ -580,6 +708,10 @@ return [[
 '[C]App%5CEntity%5CUtilisateur%24experience' => 1,
 'App%5CEntity%5CUtilisateur%24specialite' => 0,
 '[C]App%5CEntity%5CUtilisateur%24specialite' => 1,
+'App%5CEntity%5CUtilisateur%24IsBlocked' => 0,
+'[C]App%5CEntity%5CUtilisateur%24IsBlocked' => 1,
+'App%5CEntity%5CUtilisateur%24IsVerified' => 0,
+'[C]App%5CEntity%5CUtilisateur%24IsVerified' => 1,
 'App%5CEntity%5CVideo' => 0,
 '[C]App%5CEntity%5CVideo' => 1,
 'App%5CEntity%5CVideo%23getId' => 0,
@@ -1046,6 +1178,24 @@ return [[
 '[C]Doctrine%5CORM%5CPersisters%5CEntity%5CSingleTablePersister%23generateFilterConditionSQL' => 1,
 'Doctrine%5CORM%5CPersisters%5CEntity%5CSingleTablePersister%23getSQLResultCasing' => 0,
 '[C]Doctrine%5CORM%5CPersisters%5CEntity%5CSingleTablePersister%23getSQLResultCasing' => 1,
+'SymfonyCasts%5CBundle%5CResetPassword%5CController%5CResetPasswordControllerTrait' => 0,
+'[C]SymfonyCasts%5CBundle%5CResetPassword%5CController%5CResetPasswordControllerTrait' => 1,
+'SymfonyCasts%5CBundle%5CResetPassword%5CController%5CResetPasswordControllerTrait%23setCanCheckEmailInSession' => 0,
+'[C]SymfonyCasts%5CBundle%5CResetPassword%5CController%5CResetPasswordControllerTrait%23setCanCheckEmailInSession' => 1,
+'SymfonyCasts%5CBundle%5CResetPassword%5CController%5CResetPasswordControllerTrait%23canCheckEmail' => 0,
+'[C]SymfonyCasts%5CBundle%5CResetPassword%5CController%5CResetPasswordControllerTrait%23canCheckEmail' => 1,
+'SymfonyCasts%5CBundle%5CResetPassword%5CController%5CResetPasswordControllerTrait%23storeTokenInSession' => 0,
+'[C]SymfonyCasts%5CBundle%5CResetPassword%5CController%5CResetPasswordControllerTrait%23storeTokenInSession' => 1,
+'SymfonyCasts%5CBundle%5CResetPassword%5CController%5CResetPasswordControllerTrait%23getTokenFromSession' => 0,
+'[C]SymfonyCasts%5CBundle%5CResetPassword%5CController%5CResetPasswordControllerTrait%23getTokenFromSession' => 1,
+'SymfonyCasts%5CBundle%5CResetPassword%5CController%5CResetPasswordControllerTrait%23setTokenObjectInSession' => 0,
+'[C]SymfonyCasts%5CBundle%5CResetPassword%5CController%5CResetPasswordControllerTrait%23setTokenObjectInSession' => 1,
+'SymfonyCasts%5CBundle%5CResetPassword%5CController%5CResetPasswordControllerTrait%23getTokenObjectFromSession' => 0,
+'[C]SymfonyCasts%5CBundle%5CResetPassword%5CController%5CResetPasswordControllerTrait%23getTokenObjectFromSession' => 1,
+'SymfonyCasts%5CBundle%5CResetPassword%5CController%5CResetPasswordControllerTrait%23cleanSessionAfterReset' => 0,
+'[C]SymfonyCasts%5CBundle%5CResetPassword%5CController%5CResetPasswordControllerTrait%23cleanSessionAfterReset' => 1,
+'SymfonyCasts%5CBundle%5CResetPassword%5CController%5CResetPasswordControllerTrait%23getSessionService' => 0,
+'[C]SymfonyCasts%5CBundle%5CResetPassword%5CController%5CResetPasswordControllerTrait%23getSessionService' => 1,
 'Symfony%5CBundle%5CFrameworkBundle%5CController%5CRedirectController' => 0,
 '[C]Symfony%5CBundle%5CFrameworkBundle%5CController%5CRedirectController' => 1,
 'Symfony%5CBundle%5CFrameworkBundle%5CController%5CRedirectController%23__construct' => 0,
@@ -1156,6 +1306,226 @@ return [[
 ], [
 
 0 => [],
-1 => 1676731386,
+1 => 1677920798,
+2 => static function () {
+    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+        $o = [
+            clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Symfony\\Component\\Routing\\Annotation\\Route'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Routing\\Annotation\\Route')),
+        ],
+        null,
+        [
+            'Symfony\\Component\\Routing\\Annotation\\Route' => [
+                'path' => [
+                    '/mobile/utilisateur',
+                ],
+            ],
+        ],
+        [
+            $o[0],
+        ],
+        []
+    );
+},
+3 => static function () {
+    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+        $o = [
+            clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Symfony\\Component\\Routing\\Annotation\\Route'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Routing\\Annotation\\Route')),
+        ],
+        null,
+        [
+            'Symfony\\Component\\Routing\\Annotation\\Route' => [
+                'path' => [
+                    '',
+                ],
+                'methods' => [
+                    [
+                        'GET',
+                    ],
+                ],
+            ],
+        ],
+        [
+            $o[0],
+        ],
+        []
+    );
+},
+4 => static function () {
+    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+        $o = [
+            clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Symfony\\Component\\Routing\\Annotation\\Route'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Routing\\Annotation\\Route')),
+        ],
+        null,
+        [
+            'Symfony\\Component\\Routing\\Annotation\\Route' => [
+                'path' => [
+                    '/add',
+                ],
+                'methods' => [
+                    [
+                        'POST',
+                    ],
+                ],
+            ],
+        ],
+        [
+            $o[0],
+        ],
+        []
+    );
+},
+5 => static function () {
+    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+        $o = [
+            clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Symfony\\Component\\Routing\\Annotation\\Route'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Routing\\Annotation\\Route')),
+        ],
+        null,
+        [
+            'Symfony\\Component\\Routing\\Annotation\\Route' => [
+                'path' => [
+                    '/edit',
+                ],
+                'methods' => [
+                    [
+                        'POST',
+                    ],
+                ],
+            ],
+        ],
+        [
+            $o[0],
+        ],
+        []
+    );
+},
+6 => static function () {
+    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+        $o = [
+            clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Symfony\\Component\\Routing\\Annotation\\Route'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Routing\\Annotation\\Route')),
+        ],
+        null,
+        [
+            'Symfony\\Component\\Routing\\Annotation\\Route' => [
+                'path' => [
+                    '/delete',
+                ],
+                'methods' => [
+                    [
+                        'POST',
+                    ],
+                ],
+            ],
+        ],
+        [
+            $o[0],
+        ],
+        []
+    );
+},
+7 => static function () {
+    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+        $o = [
+            clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Symfony\\Component\\Routing\\Annotation\\Route'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Routing\\Annotation\\Route')),
+        ],
+        null,
+        [
+            'Symfony\\Component\\Routing\\Annotation\\Route' => [
+                'path' => [
+                    '/deleteAll',
+                ],
+                'methods' => [
+                    [
+                        'POST',
+                    ],
+                ],
+            ],
+        ],
+        [
+            $o[0],
+        ],
+        []
+    );
+},
+8 => static function () {
+    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+        $o = [
+            clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
+        ],
+        null,
+        [
+            'stdClass' => [
+                'type' => [
+                    'string',
+                ],
+                'length' => [
+                    20,
+                ],
+                'precision' => [
+                    null,
+                ],
+                'scale' => [
+                    null,
+                ],
+            ],
+        ],
+        [
+            $o[0],
+        ],
+        []
+    );
+},
+9 => static function () {
+    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+        $o = [
+            clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
+        ],
+        null,
+        [
+            'stdClass' => [
+                'type' => [
+                    'string',
+                ],
+                'length' => [
+                    100,
+                ],
+                'precision' => [
+                    null,
+                ],
+                'scale' => [
+                    null,
+                ],
+            ],
+        ],
+        [
+            $o[0],
+        ],
+        []
+    );
+},
+10 => static function () {
+    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+        $o = [
+            clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
+        ],
+        null,
+        [
+            'stdClass' => [
+                'type' => [
+                    'datetime_immutable',
+                ],
+                'precision' => [
+                    null,
+                ],
+                'scale' => [
+                    null,
+                ],
+            ],
+        ],
+        [
+            $o[0],
+        ],
+        []
+    );
+},
 
 ]];

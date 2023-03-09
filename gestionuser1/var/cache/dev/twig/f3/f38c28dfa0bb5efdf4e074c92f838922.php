@@ -62,11 +62,12 @@ class __TwigTemplate_c4bdf692c6f9556c4f01c7d94bec2afd extends Template
      <meta name=\"keywords\" content=\"\">
      <meta name=\"author\" content=\"\">
      <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, maximum-scale=1\">
+    <script src=\"https://www.google.com/recaptcha/api.js\"></script>
 
     ";
-        // line 14
+        // line 15
         $this->displayBlock('stylesheets', $context, $blocks);
-        // line 22
+        // line 23
         echo "<!--
 Tooplate 2119 Gymso Fitness
 https://www.tooplate.com/view/2119-gymso-fitness
@@ -79,6 +80,7 @@ https://www.tooplate.com/view/2119-gymso-fitness
         <div class=\"container\">
              
 
+            
             <a class=\"navbar-brand\" href=\"index.html\">FitHub</a>
 
             <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarNav\" aria-controls=\"navbarNav\" aria-expanded=\"false\"
@@ -110,8 +112,8 @@ https://www.tooplate.com/view/2119-gymso-fitness
                 </ul>
                 <ul>
                 <a href=\"";
-        // line 64
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_utilisateur_login");
+        // line 66
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_login");
         echo "\" class=\"btn custom-btn bg-color mt-3\" >Sign in</a> 
 \t\t\t\t</ul>
 
@@ -141,8 +143,8 @@ https://www.tooplate.com/view/2119-gymso-fitness
                                     <h1 class=\"text-white\" data-aos=\"fade-up\" data-aos-delay=\"500\">Upgrade your body at fitHub</h1>
 
                                     <a href=\"";
-        // line 92
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_utilisateur_add");
+        // line 94
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_register");
         echo "\" class=\"btn custom-btn bg-color mt-3\" >Become a member today</a>
 
                                     <a href=\"#about\" class=\"btn custom-btn bordered mt-3\" data-aos=\"fade-up\" data-aos-delay=\"700\">learn more</a>
@@ -156,31 +158,31 @@ https://www.tooplate.com/view/2119-gymso-fitness
 
 
 ";
-        // line 104
+        // line 106
         $this->displayBlock('body', $context, $blocks);
-        // line 107
-        echo "
-
-";
         // line 109
+        echo "
+
+";
+        // line 111
         $this->displayBlock('contact', $context, $blocks);
-        // line 143
+        // line 145
         echo "
 
     ";
-        // line 145
+        // line 147
         $this->displayBlock('footer', $context, $blocks);
-        // line 171
+        // line 173
         echo "
 ";
-        // line 172
+        // line 174
         $this->displayBlock('modal', $context, $blocks);
-        // line 213
+        // line 215
         echo "
     ";
-        // line 214
+        // line 216
         $this->displayBlock('js', $context, $blocks);
-        // line 222
+        // line 224
         echo "
 </body>
 </html>";
@@ -211,7 +213,7 @@ https://www.tooplate.com/view/2119-gymso-fitness
 
     }
 
-    // line 14
+    // line 15
     public function block_stylesheets($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -221,22 +223,22 @@ https://www.tooplate.com/view/2119-gymso-fitness
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "stylesheets"));
 
-        // line 15
+        // line 16
         echo "     <link rel=\"stylesheet\" href=\"";
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("./FrontOffice/css/bootstrap.min.css"), "html", null, true);
         echo "\">
      <link rel=\"stylesheet\" href=\"";
-        // line 16
+        // line 17
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("./FrontOffice/css/font-awesome.min.css"), "html", null, true);
         echo "\">
      <link rel=\"stylesheet\" href=\"";
-        // line 17
+        // line 18
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("./FrontOffice/css/aos.css"), "html", null, true);
         echo "\">
 
      <!-- MAIN CSS -->
      <link rel=\"stylesheet\" href=\"";
-        // line 20
+        // line 21
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("./FrontOffice/css/tooplate-gymso-style.css"), "html", null, true);
         echo "\">
      ";
@@ -248,7 +250,7 @@ https://www.tooplate.com/view/2119-gymso-fitness
 
     }
 
-    // line 104
+    // line 106
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -258,7 +260,7 @@ https://www.tooplate.com/view/2119-gymso-fitness
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 105
+        // line 107
         echo "
 ";
         
@@ -269,7 +271,7 @@ https://www.tooplate.com/view/2119-gymso-fitness
 
     }
 
-    // line 109
+    // line 111
     public function block_contact($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -279,7 +281,7 @@ https://www.tooplate.com/view/2119-gymso-fitness
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "contact"));
 
-        // line 110
+        // line 112
         echo "     <!-- CONTACT -->
      <section class=\"contact section\" id=\"contact\">
           <div class=\"container\">
@@ -321,7 +323,7 @@ https://www.tooplate.com/view/2119-gymso-fitness
 
     }
 
-    // line 145
+    // line 147
     public function block_footer($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -331,7 +333,7 @@ https://www.tooplate.com/view/2119-gymso-fitness
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "footer"));
 
-        // line 146
+        // line 148
         echo "    
      <!-- FOOTER -->
      <footer class=\"site-footer\">
@@ -365,7 +367,7 @@ https://www.tooplate.com/view/2119-gymso-fitness
 
     }
 
-    // line 172
+    // line 174
     public function block_modal($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -375,7 +377,7 @@ https://www.tooplate.com/view/2119-gymso-fitness
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "modal"));
 
-        // line 173
+        // line 175
         echo "    <!-- Modal -->
     <div class=\"modal fade\" id=\"membershipForm\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"membershipFormLabel\" aria-hidden=\"true\">
       <div class=\"modal-dialog\" role=\"document\">
@@ -424,7 +426,7 @@ https://www.tooplate.com/view/2119-gymso-fitness
 
     }
 
-    // line 214
+    // line 216
     public function block_js($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -434,26 +436,26 @@ https://www.tooplate.com/view/2119-gymso-fitness
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "js"));
 
-        // line 215
+        // line 217
         echo "     <!-- SCRIPTS -->
      <script src=\"";
-        // line 216
+        // line 218
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("./FrontOffice/js/jquery.min.js"), "html", null, true);
         echo "\"></script>
      <script src=\"";
-        // line 217
+        // line 219
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("./FrontOffice/js/bootstrap.min.js"), "html", null, true);
         echo "\"></script>
      <script src=\"";
-        // line 218
+        // line 220
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("./FrontOffice/js/aos.js"), "html", null, true);
         echo "\"></script>
      <script src=\"";
-        // line 219
+        // line 221
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("./FrontOffice/js/smoothscroll.js"), "html", null, true);
         echo "\"></script>
      <script src=\"";
-        // line 220
+        // line 222
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("./FrontOffice/js/custom.js"), "html", null, true);
         echo "\"></script>
      ";
@@ -477,7 +479,7 @@ https://www.tooplate.com/view/2119-gymso-fitness
 
     public function getDebugInfo()
     {
-        return array (  457 => 220,  453 => 219,  449 => 218,  445 => 217,  441 => 216,  438 => 215,  428 => 214,  379 => 173,  369 => 172,  335 => 146,  325 => 145,  283 => 110,  273 => 109,  262 => 105,  252 => 104,  240 => 20,  234 => 17,  230 => 16,  225 => 15,  215 => 14,  196 => 5,  184 => 222,  182 => 214,  179 => 213,  177 => 172,  174 => 171,  172 => 145,  168 => 143,  166 => 109,  162 => 107,  160 => 104,  145 => 92,  114 => 64,  70 => 22,  68 => 14,  56 => 5,  50 => 1,);
+        return array (  459 => 222,  455 => 221,  451 => 220,  447 => 219,  443 => 218,  440 => 217,  430 => 216,  381 => 175,  371 => 174,  337 => 148,  327 => 147,  285 => 112,  275 => 111,  264 => 107,  254 => 106,  242 => 21,  236 => 18,  232 => 17,  227 => 16,  217 => 15,  198 => 5,  186 => 224,  184 => 216,  181 => 215,  179 => 174,  176 => 173,  174 => 147,  170 => 145,  168 => 111,  164 => 109,  162 => 106,  147 => 94,  116 => 66,  71 => 23,  69 => 15,  56 => 5,  50 => 1,);
     }
 
     public function getSourceContext()
@@ -494,6 +496,7 @@ https://www.tooplate.com/view/2119-gymso-fitness
      <meta name=\"keywords\" content=\"\">
      <meta name=\"author\" content=\"\">
      <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, maximum-scale=1\">
+    <script src=\"https://www.google.com/recaptcha/api.js\"></script>
 
     {% block stylesheets %}
      <link rel=\"stylesheet\" href=\"{{asset('./FrontOffice/css/bootstrap.min.css')}}\">
@@ -515,6 +518,7 @@ https://www.tooplate.com/view/2119-gymso-fitness
         <div class=\"container\">
              
 
+            
             <a class=\"navbar-brand\" href=\"index.html\">FitHub</a>
 
             <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarNav\" aria-controls=\"navbarNav\" aria-expanded=\"false\"
@@ -545,7 +549,7 @@ https://www.tooplate.com/view/2119-gymso-fitness
                     </li>
                 </ul>
                 <ul>
-                <a href=\"{{ path('app_utilisateur_login') }}\" class=\"btn custom-btn bg-color mt-3\" >Sign in</a> 
+                <a href=\"{{ path('app_login') }}\" class=\"btn custom-btn bg-color mt-3\" >Sign in</a> 
 \t\t\t\t</ul>
 
                 <ul class=\"social-icon ml-lg-3\">
@@ -573,7 +577,7 @@ https://www.tooplate.com/view/2119-gymso-fitness
 
                                     <h1 class=\"text-white\" data-aos=\"fade-up\" data-aos-delay=\"500\">Upgrade your body at fitHub</h1>
 
-                                    <a href=\"{{ path('app_utilisateur_add') }}\" class=\"btn custom-btn bg-color mt-3\" >Become a member today</a>
+                                    <a href=\"{{ path('app_register') }}\" class=\"btn custom-btn bg-color mt-3\" >Become a member today</a>
 
                                     <a href=\"#about\" class=\"btn custom-btn bordered mt-3\" data-aos=\"fade-up\" data-aos-delay=\"700\">learn more</a>
                                    
@@ -705,6 +709,6 @@ https://www.tooplate.com/view/2119-gymso-fitness
      {% endblock %}
 
 </body>
-</html>", "baseFront.html.twig", "C:\\Users\\user\\Desktop\\FitHub\\templates\\baseFront.html.twig");
+</html>", "baseFront.html.twig", "C:\\Users\\user\\Desktop\\gestion user\\templates\\baseFront.html.twig");
     }
 }

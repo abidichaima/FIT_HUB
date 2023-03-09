@@ -127,7 +127,7 @@ https://www.tooplate.com/view/2119-gymso-fitness
                     <li><a href=\"#\" class=\"fa fa-instagram\" style=\"font-size:22px\"></a></li>
                     <li><a href=\"";
         // line 77
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_front");
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_logout");
         echo "\" class=\"fa fa-sign-out\" style=\"font-size:22px\"></a></li>
                 </ul>
             </div>
@@ -566,7 +566,7 @@ https://www.tooplate.com/view/2119-gymso-fitness
                     <li><a href=\"{{ path('app_profile_show') }}\" class=\"fa fa-user-circle\" style=\"font-size:25px;color:#FAC031\"></i></a></li>
                     <li><a href=\"#\" class=\"fa fa-facebook\" style=\"font-size:22px\"></a></li>
                     <li><a href=\"#\" class=\"fa fa-instagram\" style=\"font-size:22px\"></a></li>
-                    <li><a href=\"{{ path('app_front') }}\" class=\"fa fa-sign-out\" style=\"font-size:22px\"></a></li>
+                    <li><a href=\"{{ path('app_logout') }}\" class=\"fa fa-sign-out\" style=\"font-size:22px\"></a></li>
                 </ul>
             </div>
 
@@ -721,6 +721,6 @@ https://www.tooplate.com/view/2119-gymso-fitness
      {% endblock %}
 
 </body>
-</html>", "utilisateur/acceuil.html.twig", "C:\\Users\\user\\Desktop\\FitHub\\templates\\utilisateur\\acceuil.html.twig");
+</html>", "utilisateur/acceuil.html.twig", "C:\\Users\\user\\Desktop\\gestion user\\templates\\utilisateur\\acceuil.html.twig");
     }
 }
