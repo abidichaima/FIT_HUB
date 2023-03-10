@@ -1,0 +1,74 @@
+
+
+<div class="card">
+    <div class="card-body">
+        {{ form_start(form,{'attr':{'novalidate':'novalidate'}},{'attr':{'class':'forms-sample'}}) }}
+            <div class="form-group row">
+                {{form_label(form.nomAbonnement,"Nom :")}}
+                <div class="col-sm-9">
+                    {{form_widget(form.nomAbonnement,{'attr':{'class':'form-control'}})}}
+                    {% if form_errors(form.nomAbonnement) is not empty%}
+                    <div class="alert alert-danger">
+                    {{ form_errors(form.nomAbonnement) }}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="form-group row">
+                {{form_label(form.dateDebut,"Date début :")}}
+                <div class="col-sm-9">
+                    {{form_widget(form.dateDebut,{'attr':{'class':'form-control'}})}}
+                    {% if form_errors(form.dateDebut) is not empty%}
+                    <div class="alert alert-danger">
+                    {{ form_errors(form.dateDebut) }}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="form-group row">
+                {{form_label(form.dateFin,"Date Fin :")}}
+                <div class="col-sm-9">
+                    {{form_widget(form.dateFin,{'attr':{'class':'form-control'}})}}
+                    {% if form_errors(form.dateFin) is not empty%}
+                    <div class="alert alert-danger">
+                    {{ form_errors(form.dateFin) }}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="form-group row">
+                {{form_label(form.etatAbonnement,"Etat :")}}
+                <div class="col-sm-9">
+                    {{form_widget(form.etatAbonnement,{'attr':{'class':'form-control'}})}}
+                    {% if form_errors(form.etatAbonnement) is not empty%}
+                    <div class="alert alert-danger">
+                    {{ form_errors(form.etatAbonnement) }}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="form-group row">
+                {{form_label(form.typeAbonnement,"Type :")}}
+                <div class="col-sm-9">
+                    {{form_widget(form.typeAbonnement,{'attr':{'class':'form-control'}})}}
+                    {% if form_errors(form.typeAbonnement) is not empty%}
+                    <div class="alert alert-danger">
+                    {{ form_errors(form.typeAbonnement) }}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="form-group row">
+                {{form_label(form.pack,"Pack :")}}
+                <div class="col-sm-9">
+                    {{form_widget(form.pack,{'attr':{'class':'form-control'}})}}
+                    <p>{{ form_errors(form.pack) }}</p>
+                </div>
+            </div>
+            <div align="center" class="card-footer">
+                <button class="btn btn-primary mr-2">{{ button_label|default('Save') }}</button>
+                <button class="btn btn-primary mr-2"><a href="{{ path('app_abonnement_index') }}">Back To List</a></button>
+            </div>
+        {{ form_end(form) }}
+    </div>
+</div>

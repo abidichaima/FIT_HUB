@@ -1,0 +1,52 @@
+{% extends "baseBack.html.twig" %}
+
+{% block body %}
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <br>
+            <h4 class="card-title">Abonnement | {{ abonnement.nomAbonnement }}</h4>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <tbody>
+                        <tr>
+                            <th>ID</th>
+                            <td>{{ abonnement.id }}</td>
+                        </tr>
+                        <tr>
+                            <th>Nom Abonnement</th>
+                            <td>{{ abonnement.nomAbonnement }}</td>
+                        </tr>
+                        <tr>
+                            <th>Date Debut</th>
+                            <td>{{ abonnement.dateDebut ? abonnement.dateDebut|date('Y-m-d') : '' }}</td>
+                        </tr>
+                        <tr>
+                            <th>Date Fin</th>
+                            <td>{{ abonnement.dateFin ? abonnement.dateFin|date('Y-m-d') : '' }}</td>
+                        </tr>
+                        <tr>
+                            <th>Etat Abonnement</th>
+                            <td>{{ abonnement.etatAbonnement }}</td>
+                        </tr>
+                        <tr>
+                            <th>Type Abonnement</th>
+                            <td>{{ abonnement.typeAbonnement }}</td>
+                        </tr>
+                        <tr>
+                            <th>ID Pack</th>
+                            <td>{{ abonnement.pack }}</td>
+                        </tr>
+                        </tr>
+                    </tbody>
+                </table>
+                <div align="center">
+                    <button class="btn btn-primary mr-2"><a href="{{ path('app_abonnement_edit', {'id': abonnement.id}) }}">Edit</a></button>
+                    {{ include('abonnement/_delete_form.html.twig') }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+                
+{% endblock %}

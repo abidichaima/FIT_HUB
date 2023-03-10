@@ -1,0 +1,39 @@
+{% extends "baseback.html.twig" %}
+
+{% block body %}
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <br>
+            <h4 class="card-title">Abonnement | {{ pack.nomPack }}</h4>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <tbody>
+                        <tr>
+                            <th>ID</th>
+                            <td>{{ pack.id }}</td>
+                        </tr>
+                        <tr>
+                            <th>Nom Pack</th>
+                            <td>{{ pack.nomPack }}</td>
+                        </tr>
+                        <tr>
+                            <th>Prix Pack</th>
+                            <td>{{ pack.prixPack }}</td>
+                        </tr>
+                        <tr>
+                            <th>Duree Pack</th>
+                            <td>{{ pack.dureePack }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div align="center">
+                    <button class="btn btn-primary mr-2"><a href="{{ path('app_pack_edit', {'id': pack.id}) }}">Edit</a></button>
+                    {{ include('pack/_delete_form.html.twig') }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+                
+{% endblock %}

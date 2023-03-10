@@ -1,0 +1,178 @@
+{% extends "baseFront.html.twig" %}
+
+{% block body %} 
+
+    <div class="container mt-5">
+        <div class="packs-row">
+            <h1 class="text-center mb-4">Nos Packs</h1>
+            <input id="search" type="text" placeholder="search" class="pack-search-input" />
+        </div>
+        <div class="row justify-content-center">
+            {% if packs is empty %}
+                <div class="col-md-6">
+                    <div class="alert alert-info">
+                        <p class="mb-0">Aucun pack n'a été trouvé pour le moment.</p>
+                    </div>
+                </div>
+            {% else %}
+                {% for pack in packs %}
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                
+                                <h5 class="card-title">{{ pack.nomPack }}</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">{{ pack.dureePack }} mois</h6>
+                               
+                                <h3 class="card-text">{{ pack.prixPack }}dt</h3>
+                            </div>
+                            <div class="card-footer">
+                                <button class="btn custom-btn bordered mt-3 aos-init aos-animate"><a href="{{ path('app_pack_show_front', {'id': pack.id}) }}" >Voir les détails</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                <div class="pagination">
+                    {% do packs.setPageRange(3) %}
+                    {{knp_pagination_render(packs, 'pagination.html.twig')}}
+                </div>
+            {% endif %}
+        </div>
+
+        {#------search div----------#}
+        <div class="row justify-content-center" id="searchDivContainer" style="display:none">
+        </div>
+        {#------end search div-------#}
+    </div>
+                <canvas id="myChart" style="width:100%;max-width:900px"></canvas>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<script>
+let packNames = [];
+let packPrices = [];
+
+{% for pack in packs %}
+    packNames.push("{{ pack.nomPack }}");
+    packPrices.push("{{ pack.prixPack }}");
+{% endfor %}
+
+// Fonction pour générer des couleurs aléatoires
+function getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 15)];
+    }
+    return color;
+}
+
+
+// Création des données pour le graphique
+let chartData = {
+    labels: packNames,
+    datasets: [{
+        data: packPrices,
+        backgroundColor: packNames.map(name => getRandomColor())
+    }]
+};
+
+// Configuration des options du graphique
+let chartOptions = {
+    legend: { display: false },
+    title: {
+        display: true,
+        text: "Prix des Packs"
+    },
+    scales: {
+        yAxes: [{
+            ticks: {
+                beginAtZero: true
+            }
+        }]
+    }
+    
+};
+
+// Création du graphique
+let ctx = document.getElementById('myChart').getContext('2d');
+let myChart = new Chart(ctx, {
+    type: 'bar',
+    data: chartData,
+    options: chartOptions
+});
+</script>
+
+{% endblock %}
+
+
+{% block js %}
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <script>
+    
+    $(document).ready(function(){
+        $("#search").keyup(function(e){
+            var value = $(this).val();
+            console.log(value);
+
+            $.ajax({
+                type: "GET",
+                url: "{{path('searchPack')}}",
+                data: {
+                    'searchValue' : value
+                },
+
+                success: function(retour){
+                    if(retour){
+                        console.log(retour);
+
+                        $(".row.justify-content-center").empty();
+                        $(".row.justify-content-center").hide();
+                        $("#searchDivContainer").empty();
+                        $("#searchDivContainer").show();
+
+                        $.each(JSON.parse(retour), function (i, obj) {
+                            console.log(obj);
+
+                            var $newDiv1 = $("<div></div>").addClass("col-md-4 mb-4");
+                            var $newDiv2 = $("<div></div>").addClass("card h-100");
+                            var $newDiv3 = $("<div></div>").addClass("card-body");
+
+                            var $newH5 = $("<div>"+obj.nomPack+"</div>").addClass("card-title");
+                            var $newH6 = $("<div>"+obj.dureePack+"</div>").addClass("card-subtitle mb-2 text-muted");
+                            var $newH3 = $("<div>"+obj.prixPack+"</div>").addClass("card-text");
+
+                            var $newDiv4 = $("<div></div>").addClass("card-footer");
+
+                            var $newButton = $("<button></button>").addClass("btn custom-btn bordered mt-3 aos-init aos-animate");
+
+                            var $newLink = $("<a></a>").attr("href", "/pack/packfrontshow/" + obj.id + "").text("Voir les détails");
+
+                            $("#searchDivContainer").append($newDiv1);
+                            $newDiv1.append($newDiv2);
+                            $newDiv2.append($newDiv3);
+                            $newDiv3.append($newH5);
+                            $newDiv3.append($newH6);
+                            $newDiv3.append($newH3);
+
+                            $newDiv2.append($newDiv4);
+
+                            $newDiv4.append($newButton);
+                            $newButton.append($newLink);
+
+
+                        });
+                    }
+                },
+
+                error: function (xhr, status, error) {
+                    console.log("Error: " + error);
+                },
+            });
+        });
+    });
+    
+    </script>
+
+{% endblock %}

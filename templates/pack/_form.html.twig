@@ -1,0 +1,39 @@
+
+
+<div class="card">
+    <div class="card-body">
+        {{ form_start(form,{'attr':{'novalidate':'novalidate'}},{'attr':{'class':'forms-sample'}}) }}
+            <div class="form-group row">
+                {{form_label(form.nomPack,"Nom :")}}
+                <div class="col-sm-9">
+                    {{form_widget(form.nomPack,{'attr':{'class':'form-control'}})}}
+                    {% if form_errors(form.nomPack) is not empty %}
+                        <div class="alert alert-danger">{{ form_errors(form.nomPack) }}</div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="form-group row">
+                {{form_label(form.prixPack,"Prix :")}}
+                <div class="col-sm-9">
+                    {{form_widget(form.prixPack,{'attr':{'class':'form-control'}})}}
+                    {% if form_errors(form.prixPack) is not empty %}
+                        <div class="alert alert-danger">{{ form_errors(form.prixPack) }}</div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="form-group row">
+                {{form_label(form.dureePack,"Duree :")}}
+                <div class="col-sm-9">
+                    {{form_widget(form.dureePack,{'attr':{'class':'form-control'}})}}
+                    {% if form_errors(form.dureePack) is not empty %}
+                        <div class="alert alert-danger">{{ form_errors(form.dureePack) }}</div>
+                    {% endif %}
+                </div>
+            </div>
+            <div align="center" class="card-footer">
+                <button class="btn btn-primary mr-2">{{ button_label|default('Save') }}</button>
+                <button class="btn btn-primary mr-2"><a href="{{ path('app_pack_index') }}">Back To List</a></button>
+            </div>
+        {{ form_end(form) }}
+    </div>
+</div>

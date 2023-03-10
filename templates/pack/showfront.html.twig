@@ -1,0 +1,71 @@
+{% extends "baseFront.html.twig" %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+        
+    <br>
+    <h4 class="card-title">
+        PACKS | <span style="btn custom-btn bordered mt-3 aos-init aos-animate ">{{ pack.nomPack }}</span>
+    </h4>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <tbody>
+                            <tr>
+                                <td>ID:</td>
+                                <td>{{ pack.id }}</td>
+                            </tr>
+                            <tr>
+                                <td>Nom Pack:</td>
+                                <td>{{ pack.nomPack }}</td>
+                            </tr>
+                            <tr>
+                                <td>Prix Pack:</td>
+                                <td>{{ pack.prixPack }} dt</td>
+                            </tr>
+                            <tr>
+                                <td>Durée Pack:</td>
+                                <td>{{ pack.dureePack }} jours</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col">
+                <h4 class="card-title">Liste Abonnements | {{ pack.nomPack }}</h4>
+                <hr>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nom Abonnement</th>
+                                <th>Date début</th>
+                                <th>Date fin</th>
+                                <th>État</th>
+                                <th>Type</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for abonnement in abonnements %}
+                                <tr>
+                                    <td>{{ abonnement.id }}</td>
+                                    <td>{{ abonnement.nomAbonnement }}</td>
+                                    <td>{{ abonnement.dateDebut ? abonnement.dateDebut|date('Y-m-d'):"" }}</td>
+                                    <td>{{ abonnement.dateFin ? abonnement.dateFin|date('Y-m-d'):"" }}</td>
+                                    <td>{{ abonnement.etatAbonnement }}</td>
+                                    <td>{{ abonnement.typeAbonnement }}</td>
+                                    <td>
+                                        <a href="{{ path('send_mail', {id:pack.id}) }}" class="btn custom-btn bordered mt-3 aos-init aos-animate">Sélectionner</a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

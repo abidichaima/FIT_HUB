@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Détails du pack</title>
+	<style>
+		body {
+			background-color: #f1f1f1;
+			font-family: Arial, sans-serif;
+			font-size: 16px;
+			color: #333;
+		}
+
+		.card {
+			background-color: #fff;
+			border-radius: 10px;
+			box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+			padding: 30px;
+			margin: 20px;
+			text-align: center;
+		}
+
+		h1 {
+			font-size: 32px;
+			text-align: center;
+			margin-bottom: 50px;
+		}
+
+		table {
+			margin-top: 30px;
+			width: 100%;
+			border-collapse: collapse;
+			text-align: left;
+		}
+
+		table th {
+			background-color: #ff8c00;
+			color: #fff;
+			padding: 15px;
+			font-weight: bold;
+			text-transform: uppercase;
+			letter-spacing: 2px;
+			border-top-left-radius: 10px;
+			border-top-right-radius: 10px;
+		}
+
+		table td {
+			padding: 15px;
+		}
+
+		table tr:nth-child(even) {
+			background-color: #f7f7f7;
+		}
+
+		.subtitle {
+			font-size: 24px;
+			margin-top: 50px;
+			text-transform: uppercase;
+			letter-spacing: 2px;
+			color: #ff8c00;
+			text-shadow: 1px 1px 0 #fff;
+			font-weight: bold;
+		}
+	</style>
+</head>
+<body>
+	<h1>Détails du pack</h1>
+
+	<div class="card">
+		<table>
+			<tbody>
+				<tr>
+					<th scope="row">Nom</th>
+					<td>{{ pack[0].nomPack ?? 'N/A' }}</td>
+				</tr>
+				<tr>
+					<th scope="row">Prix</th>
+					<td>{{ pack[0].prixPack ?? 'N/A' }} DT</td>
+				</tr>
+				<tr>
+					<th scope="row">Durée</th>
+					<td>{{ pack[0].dureePack ?? 'N/A' }}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<p class="subtitle">BIENVENUE !</p>
+</body>
+</html>
